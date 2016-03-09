@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome)
 [![Slack Status](https://table-tome-slack.herokuapp.com/badge.svg)](https://table-tome-slack.herokuapp.com/)
-[![Trello](http://i.imgur.com/rvBlyoz.png?1)](https://trello.com/b/ZOigqCCD)
+[![Trello](https://img.shields.io/badge/tasks-on%20trello-blue.svg)](https://trello.com/b/ZOigqCCD)
 [![Dependency Status](https://david-dm.org/table-tome/table-tome.svg)](https://david-dm.org/table-tome/table-tome)
 [![devDependency Status](https://david-dm.org/table-tome/table-tome/dev-status.svg)](https://david-dm.org/table-tome/table-tome#info=devDependencies)
 
