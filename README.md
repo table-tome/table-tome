@@ -1,12 +1,12 @@
 # Table Tome
 
-[![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome) [![Gitter](https://badges.gitter.im/table-tome/table-tome.svg)](https://gitter.im/table-tome/table-tome?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Trello](http://i.imgur.com/rvBlyoz.png?1)](https://trello.com/b/ZOigqCCD)
+[![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome) [![Slack Status](https://table-tome-slack.herokuapp.com/badge.svg)](https://table-tome-slack.herokuapp.com/) [![Trello](http://i.imgur.com/rvBlyoz.png?1)](https://trello.com/b/ZOigqCCD)
 
 A complete overhaul of the original [Table Tome](https://github.com/jonwrona/Table-Tome) (was my first web app, so a little ugly on the back-end). More open sourcey, let's build a community of Dungeon Masters, players, and developers, to improve the DnD 5e experience!
 
 ## Features
 
-Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served on Heroku at [table-tome.herokuapp.com](http://table-tome.herokuapp.com/).
+Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served on Heroku at [table-tome.herokuapp.com](http://table-tome.herokuapp.com/). Any commits made to master will be served automatically on Heroku if the tests pass!
 
 Base functionality will include:
   - A sortable table of spells.
@@ -22,6 +22,10 @@ The dream:
   - A table of monsters.
   - Etc.
 
+## Develop With Me
+
+I want to make joining the effort to develop Table Tome as easy as possible, so please if you have any suggestions head over to the [Slack](https://table-tome-slack.herokuapp.com/) and message me! Read the [wiki](https://github.com/table-tome/table-tome/wiki), do your best to write unit tests, and adhere to the [coding guidelines](https://github.com/table-tome/table-tome/wiki/Coding-Standards), and I'll work with you to make sure your changes end up being contributions!
+
 ## Getting Started
 
 ### Prerequisites
@@ -31,3 +35,14 @@ The dream:
   - [MongoDB](https://www.mongodb.org/)
   - [Bower](http://bower.io/) (`npm install --g bower`)
   - [Grunt](http://gruntjs.com/) (`npm install --g grunt-cli`)
+
+### Developing
+
+  1. Run `npm install` to install server dependencies.
+  2. Run `bower install` to install client-side dependencies.
+  3. Make sure you have *MongoDB* running.
+  4. Run `grunt build` for building and `grunt serve` for previewing.
+
+### Testing
+  
+Running `npm test` will run the unit tests.
