@@ -1,0 +1,19 @@
+{
+  "name": "table-tome",
+  "version": "0.1.0",
+  "description": "A free and open source DnD 5th Edition toolbox.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "expresso test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/table-tome/table-tome"
+  },
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.13.4",
+    "expresso": "^0.9.2"
+  }
+}
