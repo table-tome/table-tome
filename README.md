@@ -24,7 +24,7 @@ The dream:
 
 ## Develop With Me
 
-I want to make joining the effort to develop Table Tome as easy as possible, so please if you have any suggestions head over to the [Slack](https://table-tome-slack.herokuapp.com/) and message me! Read the [wiki](https://github.com/table-tome/table-tome/wiki), do your best to write unit tests, and adhere to the [coding guidelines](https://github.com/table-tome/table-tome/wiki/Coding-Standards), and I'll work with you to make sure your changes end up being contributions!
+I want to make joining the effort to develop Table Tome as easy as possible, so please if you have any suggestions head over to the [Slack](https://table-tome-slack.herokuapp.com/) and message me! Read the [wiki](https://github.com/table-tome/table-tome/wiki), do your best to write unit tests, adhere to the [coding standards](https://github.com/table-tome/table-tome/wiki/Coding-Standards), and try to follow the [Git branching guidelines](https://github.com/table-tome/table-tome/wiki/Git-Branching-Guidelines), and I'll work with you to make sure your changes end up being contributions!
 
 ## Getting Started
 
