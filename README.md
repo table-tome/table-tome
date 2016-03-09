@@ -1,6 +1,10 @@
 # Table Tome
 
-[![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome) [![Slack Status](https://table-tome-slack.herokuapp.com/badge.svg)](https://table-tome-slack.herokuapp.com/) [![Trello](http://i.imgur.com/rvBlyoz.png?1)](https://trello.com/b/ZOigqCCD)
+[![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome)
+[![Slack Status](https://table-tome-slack.herokuapp.com/badge.svg)](https://table-tome-slack.herokuapp.com/)
+[![Trello](http://i.imgur.com/rvBlyoz.png?1)](https://trello.com/b/ZOigqCCD)
+[![Dependency Status](https://david-dm.org/table-tome/table-tome.svg)](https://david-dm.org/table-tome/table-tome)
+[![devDependency Status](https://david-dm.org/table-tome/table-tome/dev-status.svg)](https://david-dm.org/table-tome/table-tome#info=devDependencies)
 
 A complete overhaul of the original [Table Tome](https://github.com/jonwrona/Table-Tome) (was my first web app, so a little ugly on the back-end). More open sourcey, let's build a community of Dungeon Masters, players, and developers, to improve the DnD 5e experience!
 
