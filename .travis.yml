@@ -1,3 +1,9 @@
 language: node_js
 node_js:
- - "4.1"
+	- "4.1"
+matrix:
+	fast_finish: true
+before_script:
+	- npm install -g bower grunt-cli
+	- bower install
+services: mongodb
