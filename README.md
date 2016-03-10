@@ -49,4 +49,4 @@ I want to make joining the effort to develop Table Tome as easy as possible, so 
 
 ### Testing
   
-Running `npm test` will run the unit tests.
+Running `npm test` or `grunt test` will run the unit tests.
