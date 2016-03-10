@@ -10,7 +10,7 @@ A complete overhaul of the original [Table Tome](https://github.com/jonwrona/Tab
 
 ## Features
 
-Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served on Heroku at [table-tome.herokuapp.com](http://table-tome.herokuapp.com/). Any commits made to master will be served automatically on Heroku if the tests pass!
+Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served with Heroku at [tabletome.com](https://tabletome.com/). Any commits made to master will be served automatically on Heroku if the tests pass!
 
 Base functionality will include:
   - A sortable table of spells.
@@ -28,7 +28,7 @@ The dream:
 
 ## Develop With Me
 
-I want to make joining the effort to develop Table Tome as easy as possible, so please if you have any suggestions head over to the [Slack](https://table-tome-slack.herokuapp.com/) and message me! Read the [wiki](https://github.com/table-tome/table-tome/wiki), do your best to write unit tests, adhere to the [coding standards](https://github.com/table-tome/table-tome/wiki/Coding-Standards), and try to follow the [Git branching guidelines](https://github.com/table-tome/table-tome/wiki/Git-Branching-Guidelines), and I'll work with you to make sure your changes end up being contributions!
+I want to make joining the effort to develop Table Tome as easy as possible, so please if you have any suggestions head over to the [Slack](https://slack.tabletome.com/) and message me! Read the [wiki](https://github.com/table-tome/table-tome/wiki), do your best to write unit tests, adhere to the [coding standards](https://github.com/table-tome/table-tome/wiki/Coding-Standards), and try to follow the [Git branching guidelines](https://github.com/table-tome/table-tome/wiki/Git-Branching-Guidelines), and I'll work with you to make sure your changes end up being contributions!
 
 ## Getting Started
 
