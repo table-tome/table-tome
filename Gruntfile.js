@@ -278,4 +278,79 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint']);
 
+  grunt.registerTask('test', function(target, option) {
+    if (target === 'server') {
+      return grunt.task.run([
+        'env:all',
+        'env:test',
+        'mochaTest:unit',
+        'mochaTest:integration'
+      ]);
+    } else if (target === 'client') {
+      return grunt.task.run([
+        'clean:server',
+        'env:all',
+        'concurrent:pre',
+        'concurrent:test',
+        'injector',
+        'postcss',
+        'wiredep:test',
+        'karma'
+      ]);
+    } else if (target === 'e2e') {
+      if (option === 'prod') {
+        return grunt.task.run([
+          'build',
+          'env:all',
+          'env:prod',
+          'express:prod',
+          'protractor'
+        ]);
+      } else {
+        return grunt.task.run([
+          'clean:server',
+          'env:all',
+          'env:test',
+          'concurrent:pre',
+          'concurrent:test',
+          'injector',
+          'wiredep:client',
+          'postcss',
+          'express:dev',
+          'protractor'
+        ]);
+      }
+    } else if (target === 'coverage') {
+
+      if (option === 'unit') {
+        return grunt.task.run([
+          'env:all',
+          'env:test',
+          'mocha_istanbul:unit'
+        ]);
+      } else if (option === 'integration') {
+        return grunt.task.run([
+          'env:all',
+          'env:test',
+          'mocha_istanbul:integration'
+        ]);
+      } else if (option === 'check') {
+        return grunt.task.run([
+          'istanbul_check_coverage'
+        ]);
+      } else {
+        return grunt.task.run([
+          'env:all',
+          'env:test',
+          'mocha_istanbul',
+          'istanbul_check_coverage'
+        ]);
+      }
+
+    } else grunt.task.run([
+      'test:server',
+      'test:client'
+    ]);
+  });
+
 };
