@@ -4,7 +4,7 @@
   "description": "A free and open source DnD 5th Edition toolbox.",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server",
     "test": "grunt test"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "grunt-build-control": "^0.6.3",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-env": "^0.4.4",
     "grunt-express-server": "^0.5.2",
     "grunt-google-cdn": "^0.4.3",
     "grunt-jscs": "^2.8.0",
@@ -37,6 +38,7 @@
     "grunt-ng-constant": "^2.0.1",
     "grunt-node-inspector": "^0.4.1",
     "grunt-nodemon": "^0.4.1",
+    "grunt-open": "^0.2.3",
     "grunt-protractor-runner": "^3.0.0",
     "grunt-usemin": "^3.1.1",
     "grunt-wiredep": "^2.0.0",

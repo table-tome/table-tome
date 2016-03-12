@@ -9,19 +9,11 @@ module.exports = function(config) {
         timeout: 5000
       }
     },
-    files: [],
+    files: [
+      // bower:js
+      // endbower
+    ],
     preprocessors: {},
-    babelPreprocessor: {
-      options: {
-        sourceMap: 'inline'
-      },
-      filename: function(file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
-      },
-      sourceFileName: function(file) {
-        return file.originalPath;
-      }
-    },
     exclude: [],
     port: 8080,
     logLevel: config.LOG_INFO,

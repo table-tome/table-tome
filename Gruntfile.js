@@ -26,32 +26,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    changed: {
-      options: {
-        cache: '.changed_cache'
-      }
-    },
-    express: {
-      options: {
-        port: process.env.PORT || 9000
-      },
-      dev: {
-        options: {
-          script: 'server',
-          debug: true
-        }
-      },
-      prod: {
-        options: {
-          script: 'dist/server'
-        }
-      }
-    },
-    open: {
-      server: {
-        url: 'http://localhost:<%= express.options.port %>'
-      }
-    },
     bower: {
       options: {
         targetDir: 'client/bower_components',
@@ -64,7 +38,8 @@ module.exports = function(grunt) {
       },
       all: {
         src: ['bower.json', '.bowerrc'],
-      }
+      },
+      install: {}
     },
     auto_install: {
       all: {
@@ -75,53 +50,6 @@ module.exports = function(grunt) {
           }
         },
         src: ['package.json']
-      }
-    },
-    watch: {
-      installBower: {
-        files: ['bower.json', '.bowerrc'],
-        tasks: ['changed:bower']
-      },
-      bower: {
-        files: ['bower.json'],
-        tasks: ['wiredep']
-      },
-      installNPM: {
-        files: ['package.json'],
-        tasks: ['changed:auto_install']
-      },
-      mochaTest: {
-        files: ['server/**/*.{spec,integration}.js'],
-        tasks: ['env:test', 'mochaTest']
-      },
-      jsTest: {
-        files: ['client/{app,components}/**/*.{spec,mock}.js'],
-        tasks: ['newer:jshint:all', 'wiredep:test', 'karma']
-      },
-      gruntfile: {
-        files: ['Gruntfile.js']
-      },
-    },
-    jshint: {
-      options: {
-        jshintrc: 'client/.jshintrc',
-        reporter: require("jshint-stylish")
-      },
-      server: {
-        options: {
-          jshintrc: 'server/.jshintrc'
-        },
-        src: ['server/**/!(*.spec|*.integration).js']
-      },
-      serverTest: {
-        options: {
-          jshintrc: 'server/.jshintrc-spec'
-        },
-        src: ['server/**/*.{spec,integration}.js']
-      },
-      all: ['client/{app,components}/**/!(*.spec|*.mock|app.constant).js'],
-      test: {
-        src: ['client/{app,components}/**/*.{spec,mock}.js']
       }
     },
     jscs: {
@@ -148,22 +76,6 @@ module.exports = function(grunt) {
         }]
       },
       server: '.tmp'
-    },
-    postcss: {
-      options: {
-        map: true,
-        processors: [
-          require('autoprefixer')({ browsers: ['last 2 version'] })
-        ]
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/',
-          src: '{,*/}*.css',
-          dest: '.tmp/'
-        }]
-      }
     },
     'node-inspector': {
       custom: {
@@ -264,73 +176,41 @@ module.exports = function(grunt) {
     },
     env: {
       test: {
-        NODE_ENV: 'test'
+        NODE_ENV: 'test',
+        src: './server/config/local.env'
       },
-      prod: {
-        NODE_ENV: 'production'
+      dev: {
+        NODE_ENV: 'development',
+        src: './server/config/local.env'
       },
-      all: localConfig
-    },
+      heroku: {
+        NODE_ENV: 'production',
+        src: '.env'
+      },
+    }
   });
-
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['jshint']);
 
   grunt.registerTask('test', function(target, option) {
     if (target === 'server') {
       return grunt.task.run([
-        'env:all',
         'env:test',
         'mochaTest:unit',
         'mochaTest:integration'
       ]);
     } else if (target === 'client') {
       return grunt.task.run([
-        'clean:server',
-        'env:all',
-        'concurrent:pre',
-        'concurrent:test',
-        'injector',
-        'postcss',
+        'env:test',
         'wiredep:test',
         'karma'
       ]);
-    } else if (target === 'e2e') {
-      if (option === 'prod') {
-        return grunt.task.run([
-          'build',
-          'env:all',
-          'env:prod',
-          'express:prod',
-          'protractor'
-        ]);
-      } else {
-        return grunt.task.run([
-          'clean:server',
-          'env:all',
-          'env:test',
-          'concurrent:pre',
-          'concurrent:test',
-          'injector',
-          'wiredep:client',
-          'postcss',
-          'express:dev',
-          'protractor'
-        ]);
-      }
     } else if (target === 'coverage') {
-
       if (option === 'unit') {
         return grunt.task.run([
-          'env:all',
-          'env:test',
+          'env.test',
           'mocha_istanbul:unit'
         ]);
       } else if (option === 'integration') {
         return grunt.task.run([
-          'env:all',
           'env:test',
           'mocha_istanbul:integration'
         ]);
@@ -340,17 +220,18 @@ module.exports = function(grunt) {
         ]);
       } else {
         return grunt.task.run([
-          'env:all',
           'env:test',
           'mocha_istanbul',
           'istanbul_check_coverage'
         ]);
       }
-
     } else grunt.task.run([
       'test:server',
       'test:client'
     ]);
   });
+
+
+
 
 };
