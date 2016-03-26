@@ -1,7 +1,7 @@
 # Table Tome
 
 [![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome)
-[![Slack Status](https://table-tome-slack.herokuapp.com/badge.svg)](https://table-tome-slack.herokuapp.com/)
+[![Gitter](https://badges.gitter.im/table-tome/table-tome.svg)](https://gitter.im/table-tome/table-tome?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![Trello](https://img.shields.io/badge/tasks-on%20trello-blue.svg)](https://trello.com/b/ZOigqCCD)
 [![Dependency Status](https://david-dm.org/table-tome/table-tome.svg)](https://david-dm.org/table-tome/table-tome)
 [![devDependency Status](https://david-dm.org/table-tome/table-tome/dev-status.svg)](https://david-dm.org/table-tome/table-tome#info=devDependencies)
@@ -10,7 +10,7 @@ A complete overhaul of the original [Table Tome](https://github.com/jonwrona/Tab
 
 ## Features
 
-Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served on Heroku at [table-tome.herokuapp.com](http://table-tome.herokuapp.com/). Any commits made to master will be served automatically on Heroku if the tests pass!
+Table Tome is a Dungeons and Dragons 5th Edition Toolbox with big dreams. It is currently being served with Heroku at [tabletome.com](https://tabletome.com/). Any commits made to master will be served automatically on Heroku if the tests pass!
 
 Base functionality will include:
   - A sortable table of spells.
@@ -49,4 +49,4 @@ I want to make joining the effort to develop Table Tome as easy as possible, so 
 
 ### Testing
   
-Running `npm test` will run the unit tests.
+Running `npm test` or `grunt test` will run the unit tests.
