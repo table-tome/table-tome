@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "test": "grunt test",
-    "postinstall": "bower cache clean && bower install"
+    "postinstall": "npm install -g bower && bower cache clean && bower install"
   },
   "repository": {
     "type": "git",
