@@ -23,3 +23,7 @@ img.logo {
 .table.selectable:hover {
 	cursor: pointer;
 }
+
+.spellbook {
+	min-height: 70vh;
+}
