@@ -14,3 +14,12 @@ img.logo {
 .disclaimer {
 	margin: 0em 1em;
 }
+
+.notop {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
+.table.selectable:hover {
+	cursor: pointer;
+}

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "semantic": "semantic-ui#^2.1.8",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3"
   },
   "overrides": {
     "semantic": {
