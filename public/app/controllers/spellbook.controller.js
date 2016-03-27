@@ -11,9 +11,9 @@ angular.module('spellbook.controller', [])
     $scope.filters = {
       search: "",
       levels: [],
-      classes: []
+      classes: [],
+      schools: []
     };
-
 
     $scope.clickedSpell = {};
     $scope.clicked = function(spell) {

@@ -25,7 +25,7 @@ var classes = [
 
 var SpellSchema = new Schema({
 	// metadata
-	// 	* source?
+	// 	* source or author (user)?
 	// spell information
   name: { type: String, required: true },
   level: { type: Number, required: true, min: 0, max: 9 },

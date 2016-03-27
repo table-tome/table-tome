@@ -1,10 +1,4 @@
 node_modules
 public/bower_components
 npm-debug.log
-server/npm-debug.log
-dist
-server/config/local.env.js
-coverage
-.changed_cache
-.tmp
-.sass-cache
+.env

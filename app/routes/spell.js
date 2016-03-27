@@ -9,5 +9,12 @@ module.exports = function(app, express) {
     })
   });
 
+  spellRouter.get('/spells', function(req, res) {
+  	Spell.find({}, function(err, spells) {
+  		if (err) return res.send(err);
+  		res.json(spells);
+  	});
+  });
+
   return spellRouter;
 };

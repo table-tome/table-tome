@@ -28,14 +28,16 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/assets/img/table-tome-logo.png'));
 
+mongoose.connect(process.env.MONGOLAB_URI)
+
 // ROUTES
 // ======
 
 // SPELL ROUTES
 // ------------
 
-var spellRoutes = require('./app/routes/spell')(app, express);
-app.use('/api/spell', spellRoutes);
+var api = require('./app/routes/api')(app, express);
+app.use('/api', api);
 
 // MAIN CATCHALL
 // -------------
