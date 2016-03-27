@@ -6,4 +6,6 @@ angular.module('main.controller', [])
     $scope.login = function() { $scope.loggedIn = true; };
     $scope.logout = function() { $scope.loggedIn = false; };
 
+    $scope.markdown = "#Markdown directive\n*It works!*"
+
   }]);

@@ -4,7 +4,7 @@
     <div class="ui divider"></div>
     <div class="field">
       <label>Levels</label>
-      <select name="levels" multiple="" class="ui fluid dropdown">
+      <select name="levels" multiple="" class="ui fluid dropdown" ng-model="filters.levels">
         <option value="">Filter Levels</option>
         <option value="0">Cantrip</option>
         <option value="1">Level 1</option>
@@ -20,7 +20,7 @@
     </div>
     <div class="field">
       <label>Classes</label>
-      <select name="classes" multiple="" class="ui fluid dropdown">
+      <select name="classes" multiple="" class="ui fluid dropdown" ng-model="filters.classes">
         <option value="">Filter Classes</option>
         <option value="bard">Bard</option>
         <option value="cleric">Cleric</option>

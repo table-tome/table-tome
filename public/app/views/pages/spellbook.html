@@ -1,7 +1,7 @@
 <div class="ui basic segment notop">
   <ng-include src="'app/views/includes/spellbook.filters.html'"></ng-include>
   <div class="ui huge fluid icon input">
-    <input type="text" placeholder="Search..." />
+    <input type="text" placeholder="Search..." ng-model="filters.search" />
     <i class="search icon"></i>
   </div>
   <table class="ui sortable selectable celled table">

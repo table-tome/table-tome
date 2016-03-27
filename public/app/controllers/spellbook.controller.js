@@ -8,6 +8,12 @@ angular.module('spellbook.controller', [])
       classes: 'wizard'
     }];
 
+    $scope.filters = {
+      search: "",
+      levels: [],
+      classes: []
+    };
+
 
     $scope.clickedSpell = {};
     $scope.clicked = function(spell) {
