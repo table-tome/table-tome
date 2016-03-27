@@ -1,15 +1,10 @@
-<div class="ui basic loading segment notop spellbook">
-  <div class="ui left close rail">
-    <div class="ui segment">
-      Filters
-    </div>
+<div class="ui basic segment notop">
+  <ng-include src="'app/views/includes/spellbook.filters.html'"></ng-include>
+  <div class="ui huge fluid icon input">
+    <input type="text" placeholder="Search..." />
+    <i class="search icon"></i>
   </div>
-  <div class="ui right close rail">
-    <div class="ui segment">
-      Lists
-    </div>
-  </div>
-  <table class="ui sortable selectable celled table notop">
+  <table class="ui sortable selectable celled table">
     <thead>
       <tr>
         <th class="sorted descending">Spell Name</th>

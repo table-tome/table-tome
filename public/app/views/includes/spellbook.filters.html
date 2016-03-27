@@ -1,0 +1,39 @@
+<div class="ui left close rail">
+  <div class="ui segment filter">
+    <div class="ui large header">Filter</div>
+    <div class="ui divider"></div>
+    <div class="field">
+      <label>Levels</label>
+      <select name="levels" multiple="" class="ui fluid dropdown">
+        <option value="">Filter Levels</option>
+        <option value="0">Cantrip</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Classes</label>
+      <select name="classes" multiple="" class="ui fluid dropdown">
+        <option value="">Filter Classes</option>
+        <option value="bard">Bard</option>
+        <option value="cleric">Cleric</option>
+        <option value="druid">Druid</option>
+        <option value="paladin">Paladin</option>
+        <option value="ranger">Ranger</option>
+        <option value="sorcerer">Sorcerer</option>
+        <option value="warlock">Warlock</option>
+        <option value="wizard">Wizard</option>
+      </select>
+    </div>
+  </div>
+</div>
+<script>
+$('.ui.dropdown').dropdown();
+</script>
