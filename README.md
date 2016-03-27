@@ -1,5 +1,6 @@
 # Table Tome
 
+[![Heroku](https://heroku-badge.herokuapp.com/?app=table-tome&style=flat&svg=1)](http://table-tome.herokuapp.com)
 [![Build Status](https://travis-ci.org/table-tome/table-tome.svg?branch=master)](https://travis-ci.org/table-tome/table-tome)
 [![Gitter](https://badges.gitter.im/table-tome/table-tome.svg)](https://gitter.im/table-tome/table-tome?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![Trello](https://img.shields.io/badge/tasks-on%20trello-blue.svg)](https://trello.com/b/ZOigqCCD)
