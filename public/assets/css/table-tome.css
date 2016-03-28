@@ -41,3 +41,7 @@ img.logo {
   font-weight: 700;
   text-transform: none;
 }
+
+.ui.left.pointing.label:hover {
+  cursor: default;
+}

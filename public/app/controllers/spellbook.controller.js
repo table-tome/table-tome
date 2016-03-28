@@ -1,12 +1,7 @@
-angular.module('spellbook.controller', [])
-  .controller('spellbookCtrl', ['$scope', function($scope) {
+angular.module('spellbook.controller', ['spell.service'])
+  .controller('spellbookCtrl', ['$scope', 'Spells', function($scope, Spells) {
 
-    $scope.spells = [{
-      name: 'spell 1',
-      level: '1',
-      school: 'stuff',
-      classes: 'wizard'
-    }];
+    $scope.spells = Spells.spells;
 
     $scope.filters = {
       search: "",

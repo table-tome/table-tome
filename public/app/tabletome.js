@@ -3,6 +3,8 @@ angular.module('tabletome', [
 		// controllers
 		'main.controller',
 		'spellbook.controller',
+		// services
+		'spell.service',
 		// markdown display
 		'ngSanitize',
 		'btford.markdown'

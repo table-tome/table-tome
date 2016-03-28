@@ -34,6 +34,7 @@ var SpellSchema = new Schema({
   classes: { type: [{ type: String, required: true, enum: classes }], required: true },
   castingTime: { type: String, required: true },
   range: { type: String, required: true },
+  duration: { type: String, required: true },
   components: {
     verbal: { type: Boolean, required: true },
     somatic: { type: Boolean, required: true },
