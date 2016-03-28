@@ -15,11 +15,6 @@ img.logo {
   margin: 0em 1em;
 }
 
-.notop {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
 .table.selectable:hover {
   cursor: pointer;
 }
@@ -31,15 +26,6 @@ img.logo {
 
 .filter .field {
   margin-bottom: 1em;
-}
-
-.filter .field>label {
-  display: block;
-  margin: 0 0 .28571429rem;
-  color: rgba(0, 0, 0, .87);
-  font-size: .92857143em;
-  font-weight: 700;
-  text-transform: none;
 }
 
 .ui.left.pointing.label:hover {

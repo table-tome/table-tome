@@ -1,0 +1,59 @@
+/* For markdown tables, because (maybe) can't add classes to them
+   editing the directive (which is definitely a better solution,
+   but this is temporary?). */
+
+table {
+  display: table;
+  font-size: 1em;
+  width: 100%;
+  background: #fff;
+  margin: 1em 0 2em 0;
+  border: 1px solid rgba(34, 36, 38, .15);
+  box-shadow: none;
+  border-radius: 0.28571429rem;
+  text-align: left;
+  color: rgba(0, 0, 0, .87);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table thead {
+  box-shadow: none;
+}
+
+table thead tr:first-child>th:first-child {
+  border-radius: 0.28571429rem 0 0;
+  border-left: none;
+}
+
+table thead th {
+  cursor: auto;
+  background: #f9fafb;
+  text-align: inherit;
+  color: rgba(0, 0, 0, .87);
+  padding: .92857143em .71428571em;
+  vertical-align: inherit;
+  font-style: none;
+  font-weight: 700;
+  text-transform: none;
+  border-left: 1px solid rgba(34, 36, 38, .1);
+  border-bottom: 1px solid rgba(34, 36, 38, .1);
+}
+
+table tr:first-child td {
+  border-top: none;
+}
+
+table tr td {
+  border-left: 1px solid rgba(34, 36, 38, .1);
+  border-top: 1px solid rgba(34,36,38,.1);
+}
+
+table tr td:first-child {
+  border-left: none;
+}
+
+table td {
+  padding: .71428571em;
+  text-align: inherit;
+}

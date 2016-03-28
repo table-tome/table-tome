@@ -6,17 +6,18 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
   <title>Table Tome</title>
   <base href="/">
+  <!-- css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="../../bower_components/semantic/dist/semantic.min.css" />
   <!-- endbower -->
-  <!-- custom css -->
-  <link rel="stylesheet" href="../../assets/css/table-tome.css" />
+  <link rel="stylesheet" href="assets/css/table-tome.css" />
 </head>
 
 <body ng-controller="mainCtrl">
   <ng-include src="'app/views/includes/menu.html'"></ng-include>
   <div class="ui main container fillheight" ng-view></div>
   <ng-include src="'app/views/includes/footer.html'"></ng-include>
+  <!-- js -->
   <!-- bower:js -->
   <script src="../../bower_components/jquery/dist/jquery.js"></script>
   <script src="../../bower_components/semantic/dist/semantic.min.js"></script>
@@ -26,6 +27,7 @@
   <script src="../../bower_components/showdown/src/showdown.js"></script>
   <script src="../../bower_components/showdown/src/extensions/table.js"></script>
   <script src="../../bower_components/angular-markdown-directive/markdown.js"></script>
+  <script src="../../bower_components/underscore/underscore.js"></script>
   <!-- endbower -->
   <!-- ANGULAR -->
   <!-- controllers -->

@@ -5,7 +5,8 @@
     "semantic": "semantic-ui#^2.1.8",
     "angular": "^1.5.3",
     "angular-route": "^1.5.3",
-    "angular-markdown-directive": "^0.3.1"
+    "angular-markdown-directive": "^0.3.1",
+    "underscore": "^1.8.3"
   },
   "overrides": {
     "semantic": {

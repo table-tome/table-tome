@@ -1,68 +1,63 @@
-<div class="ui left very close rail">
-  <div class="ui segment filter">
-    <div class="ui large header">Filter</div>
-    <div class="ui divider"></div>
-    <div class="field">
-      <label>Levels</label>
-      <select name="levels" multiple="" class="ui fluid dropdown" ng-model="filters.levels">
-        <option value="">Filter Levels</option>
-        <option value="0">Cantrip</option>
-        <option value="1">Level 1</option>
-        <option value="2">Level 2</option>
-        <option value="3">Level 3</option>
-        <option value="4">Level 4</option>
-        <option value="5">Level 5</option>
-        <option value="6">Level 6</option>
-        <option value="7">Level 7</option>
-        <option value="8">Level 8</option>
-        <option value="9">Level 9</option>
-      </select>
+<div id="spellbookfilters" class="ui fluid vertical menu">
+  <div class="ui large header item">Filter</div>
+  <div class="field item">
+    <div class="header">Levels</div>
+    <select name="levels" multiple="" class="ui fluid dropdown" ng-model="filters.levels">
+      <option value="">Filter Levels</option>
+      <option value="0">Cantrip</option>
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+      <option value="4">Level 4</option>
+      <option value="5">Level 5</option>
+      <option value="6">Level 6</option>
+      <option value="7">Level 7</option>
+      <option value="8">Level 8</option>
+      <option value="9">Level 9</option>
+    </select>
+  </div>
+  <div class="field item">
+    <div class="header">Classes</div>
+    <select name="classes" multiple="" class="ui fluid dropdown" ng-model="filters.classes">
+      <option value="">Filter Classes</option>
+      <option value="bard">Bard</option>
+      <option value="cleric">Cleric</option>
+      <option value="druid">Druid</option>
+      <option value="paladin">Paladin</option>
+      <option value="ranger">Ranger</option>
+      <option value="sorcerer">Sorcerer</option>
+      <option value="warlock">Warlock</option>
+      <option value="wizard">Wizard</option>
+    </select>
+  </div>
+  <div class="field item">
+    <div class="header">Schools</div>
+    <select name="schools" multiple="" class="ui fluid dropdown" ng-model="filters.schools">
+      <option value="">Filter Schools</option>
+      <option value="abjuration">Abjuration</option>
+      <option value="conjuration">Conjuration</option>
+      <option value="divination">Divination</option>
+      <option value="enchantment">Enchantment</option>
+      <option value="evocation">Evocation</option>
+      <option value="illusion">Illusion</option>
+      <option value="necromancy">Necromancy</option>
+      <option value="transmutation">Transmutation</option>
+    </select>
+  </div>
+  <div class="inline field item">
+    <div class="ui checkbox" ng-click="filters.ritual = !filters.ritual">
+      <input type="checkbox" class="hidden">
+      <label>Show <strong>ONLY</strong> Ritual Spells</label>
     </div>
-    <div class="field">
-      <label>Classes</label>
-      <select name="classes" multiple="" class="ui fluid dropdown" ng-model="filters.classes">
-        <option value="">Filter Classes</option>
-        <option value="bard">Bard</option>
-        <option value="cleric">Cleric</option>
-        <option value="druid">Druid</option>
-        <option value="paladin">Paladin</option>
-        <option value="ranger">Ranger</option>
-        <option value="sorcerer">Sorcerer</option>
-        <option value="warlock">Warlock</option>
-        <option value="wizard">Wizard</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Schools</label>
-      <select name="schools" multiple="" class="ui fluid dropdown" ng-model="filters.schools">
-        <option value="">Filter Schools</option>
-        <option value="abjuration">Abjuration</option>
-        <option value="conjuration">Conjuration</option>
-        <option value="divination">Divination</option>
-        <option value="enchantment">Enchantment</option>
-        <option value="evocation">Evocation</option>
-        <option value="illusion">Illusion</option>
-        <option value="necromancy">Necromancy</option>
-        <option value="transmutation">Transmutation</option>
-      </select>
-    </div>
-    <div class="ui divider"></div>
-    <div class="inline field">
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" ng-model="filters.ritualOnly">
-        <label>Show <strong>ONLY</strong> Ritual Spells</label>
-      </div>
-    </div>
-    <div class="ui divider"></div>
-    <div class="field">
-      <label>Sources</label>
-      <select name="sources" multiple="" class="ui fluid dropdown" ng-model="filters.sources">
-        <option value="">Filter Sources</option>
-        <option value="phb">Official Player's Handbook</option>
-        <option value="ee">Elemental Evil</option>
-        <option value="custom">Custom Spells</option>
-      </select>
-    </div>
+  </div>
+  <div class="field item">
+    <div class="header">Sources</div>
+    <select name="sources" multiple="" class="ui fluid dropdown" ng-model="filters.sources">
+      <option value="">Filter Sources</option>
+      <option value="phb">Official Player's Handbook</option>
+      <option value="ee">Elemental Evil</option>
+      <option value="custom">Custom Spells</option>
+    </select>
   </div>
 </div>
 <script>
