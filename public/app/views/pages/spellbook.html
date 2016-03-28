@@ -1,7 +1,5 @@
 <div class="ui stackable grid container">
-  <div class="five wide column">
-    <ng-include src="'app/views/includes/spellbook.filters.html'"></ng-include>
-  </div>
+  <div class="five wide column" ng-include="'app/views/includes/spellbook.filters.html'"></div>
   <div class="eleven wide column">
     <div class="ui huge fluid icon input">
       <input type="text" placeholder="Search by spell name..." ng-model="filters.search" />
