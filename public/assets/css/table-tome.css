@@ -1,5 +1,17 @@
+.toc.item {
+  display: none !important;
+}
+
+.item.show {
+  display: none !important;
+}
+
 img.logo {
   margin-right: 1.5em !important;
+}
+
+.item.show img.logo {
+  margin-right: 0 !important;
 }
 
 .main.container {
@@ -30,4 +42,20 @@ img.logo {
 
 .ui.left.pointing.label:hover {
   cursor: default;
+}
+
+@media only screen and (max-width: 700px) {
+  .toc.item {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .item.show {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .item.hide {
+    display: none !important;
+  }
 }

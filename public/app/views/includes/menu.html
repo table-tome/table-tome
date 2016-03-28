@@ -1,10 +1,20 @@
+<div class="ui vertical inverted sidebar menu left">
+  <a ng-click="sidebar()" href="/" class="item">
+    <img class="ui avatar image" src="../../assets/img/table-tome-logo.png"> Table Tome
+  </a>
+  <a class="item" ng-click="sidebar()" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
+</div>
+<!-- end sidebar -->
 <div class="ui fixed inverted menu">
-  <!-- fixed?? -->
   <div class="ui container">
-    <a href="/" class="header item">
+    <a class="toc item" ng-click="sidebar()"><i class="sidebar icon"></i></a>
+    <a href="/" class="header item show">
+      <img class="logo" src="../../assets/img/table-tome-logo.png">
+    </a>
+    <a href="/" class="header item hide">
       <img class="logo" src="../../assets/img/table-tome-logo.png"> Table Tome
     </a>
-    <a class="ui item" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
+    <a class="ui item hide" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
     <div class="right menu">
       <a class="ui item" href="/login" ng-click="login()" ng-if="!loggedIn">Login / Register</a>
       <div class="ui simple dropdown item" ng-if="loggedIn">
