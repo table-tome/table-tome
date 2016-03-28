@@ -21,7 +21,7 @@
           <td>{{ spell.name }}</td>
           <td ng-switch on="spell.level">
             <span ng-switch-when="0">cantrip</span>
-            <span ng-switch-default>{{ clickedSpell.level }}</span>
+            <span ng-switch-default>{{ spell.level }}</span>
           </td>
           <td>{{ spell.school }}</td>
           <td>
