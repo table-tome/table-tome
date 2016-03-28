@@ -94,3 +94,8 @@ img.logo {
   padding-top: 5em;
   padding-bottom: 5em;
 }
+
+th.nohand:hover {
+  cursor: default !important;
+  background: none !important;
+}
