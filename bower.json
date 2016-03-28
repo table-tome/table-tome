@@ -13,6 +13,12 @@
         "dist/semantic.min.css",
         "dist/semantic.min.js"
       ]
+    },
+    "showdown": {
+      "main": [
+        "src/showdown.js",
+        "src/extensions/table.js"
+      ]
     }
   }
 }
