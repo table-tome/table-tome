@@ -16,9 +16,16 @@
     <tbody>
       <tr ng-click="clicked(spell)" ng-repeat="spell in spells">
         <td>{{ spell.name }}</td>
-        <td>{{ spell.level }}</td>
+        <td ng-switch on="spell.level">
+          <span ng-switch-when="0">cantrip</span>
+          <span ng-switch-default>{{ clickedSpell.level }}</span>
+        </td>
         <td>{{ spell.school }}</td>
-        <td>{{ spell.classes }}</td>
+        <td>
+          <div class="ui list">
+            <div class="item" ng-repeat="class in spell.classes">{{ class }}</div>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

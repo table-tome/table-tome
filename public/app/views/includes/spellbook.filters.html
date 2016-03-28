@@ -1,4 +1,4 @@
-<div class="ui left close rail">
+<div class="ui left very close rail">
   <div class="ui segment filter">
     <div class="ui large header">Filter</div>
     <div class="ui divider"></div>
@@ -46,8 +46,26 @@
         <option value="transmutation">Transmutation</option>
       </select>
     </div>
+    <div class="ui divider"></div>
+    <div class="inline field">
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" ng-model="filters.ritualOnly">
+        <label>Show <strong>ONLY</strong> Ritual Spells</label>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="field">
+      <label>Sources</label>
+      <select name="sources" multiple="" class="ui fluid dropdown" ng-model="filters.sources">
+        <option value="">Filter Sources</option>
+        <option value="phb">Official Player's Handbook</option>
+        <option value="ee">Elemental Evil</option>
+        <option value="custom">Custom Spells</option>
+      </select>
+    </div>
   </div>
 </div>
 <script>
 $('.ui.dropdown').dropdown();
+$('.ui.checkbox').checkbox();
 </script>
