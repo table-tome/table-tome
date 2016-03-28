@@ -39,7 +39,6 @@ angular.module('spellbook.controller', ['spell.service'])
       };
       // filters to ritual spells
       var ritual = function(spell) {
-        console.log($scope.filters.ritual);
         if ($scope.filters.ritual && !spell.ritual) return false;
         return true;
       }

@@ -8,16 +8,16 @@
     <table class="ui sortable selectable celled table">
       <thead>
         <tr>
-          <th class="sorted descending">Spell Name</th>
+          <th class="sorted ascending">Spell Name</th>
           <th class="">Level</th>
           <th class="">School</th>
-          <th class="">Classes</th>
+          <th class="no-sort">Classes</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-click="clicked(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter">
           <td>{{ spell.name }}</td>
-          <td ng-switch on="spell.level">
+          <td ng-switch on="spell.level" data-sort-value="{{ spell.level }}">
             <span ng-switch-when="0">cantrip</span>
             <span ng-switch-default>{{ spell.level }}</span>
           </td>
@@ -33,3 +33,8 @@
   </div>
 </div>
 <ng-include src="'app/views/includes/modal.spell.html'"></ng-include>
+<script>
+$(function() {
+  $('table.sortable').tablesort().sort($("th.sorted"));
+});
+</script>
