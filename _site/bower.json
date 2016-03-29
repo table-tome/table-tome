@@ -1,0 +1,16 @@
+{
+  "name": "table-tome",
+  "version": "0.0.0",
+  "dependencies": {
+    "semantic": "semantic-ui#^2.1.8",
+    "angular": "^1.5.3"
+  },
+  "overrides": {
+    "semantic": {
+      "main": [
+        "dist/semantic.min.css",
+        "dist/semantic.min.js"
+      ]
+    }
+  }
+}
