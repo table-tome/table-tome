@@ -10,4 +10,6 @@ angular.module('main.controller', [])
     	$('.ui.sidebar').sidebar('toggle');
     };
 
+    $scope.keep = false;
+
   }]);

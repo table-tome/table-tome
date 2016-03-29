@@ -32,7 +32,7 @@ img.logo {
 }
 
 .fillheight {
-  min-height: 55vh;
+  min-height: 50vh;
 }
 
 .filter .field {
@@ -98,4 +98,8 @@ img.logo {
 th.nohand:hover {
   cursor: default !important;
   background: none !important;
+}
+
+.spell.labels .label {
+  margin-bottom: 0.5em;
 }

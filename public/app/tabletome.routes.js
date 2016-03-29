@@ -7,6 +7,9 @@ angular.module('tabletome.routes', ['ngRoute'])
       .when('/login', {
         templateUrl: 'app/views/pages/login.html'
       })
+      .when('/register', {
+        templateUrl: 'app/views/pages/register.html'
+      })
       .when('/spellbook', {
       	templateUrl: 'app/views/pages/spellbook.html',
       	controller: 'spellbookCtrl'
