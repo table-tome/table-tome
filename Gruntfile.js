@@ -16,4 +16,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-wiredep');
 
+  grunt.registerTask('test', function() {
+    grunt.log.write('temp test placeholder');
+  });
+
 };

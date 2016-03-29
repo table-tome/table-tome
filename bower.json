@@ -3,13 +3,23 @@
   "version": "0.0.0",
   "dependencies": {
     "semantic": "semantic-ui#^2.1.8",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "angular-markdown-directive": "^0.3.1",
+    "underscore": "^1.8.3",
+    "jquery-tablesort": "^0.0.6"
   },
   "overrides": {
     "semantic": {
       "main": [
         "dist/semantic.min.css",
         "dist/semantic.min.js"
+      ]
+    },
+    "showdown": {
+      "main": [
+        "src/showdown.js",
+        "src/extensions/table.js"
       ]
     }
   }

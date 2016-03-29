@@ -1,16 +1,105 @@
-img.logo {
-	margin-right: 1.5em !important;
+.toc.item {
+  display: none !important;
 }
 
-.main.container {
-	margin-top: 7em;
+.item.show {
+  display: none !important;
+}
+
+img.logo {
+  margin-right: 1.5em !important;
+}
+
+.item.show img.logo {
+  margin-right: 0 !important;
+}
+
+.main {
+  margin-top: 7em;
 }
 
 .ui.footer.segment {
-	margin: 5em 0em 0em;
-	padding: 5em 0em;
+  margin: 5em 0em 0em;
+  padding: 5em 0em;
 }
 
 .disclaimer {
-	margin: 0em 1em;
+  margin: 0em 1em;
+}
+
+.table.selectable:hover {
+  cursor: pointer;
+}
+
+.fillheight {
+  min-height: 50vh;
+}
+
+.filter .field {
+  margin-bottom: 1em;
+}
+
+.ui.left.pointing.label:hover {
+  cursor: default;
+}
+
+@media only screen and (max-width: 700px) {
+  .toc.item {
+    display: flex !important;
+    align-items: center;
+  }
+  .item.show {
+    display: flex !important;
+    align-items: center;
+  }
+  .item.hide {
+    display: none !important;
+  }
+}
+
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+
+.ui.vertical.stripe:first-child {
+  padding: 0 0 8em 0;
+}
+
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+
+.ui.vertical.stripe p {
+  font-size: 1.33em;
+}
+
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
+}
+
+.quote.stripe.segment {
+  padding: 0em;
+}
+
+.quote.stripe.segment .grid .column {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+th.nohand:hover {
+  cursor: default !important;
+  background: none !important;
+}
+
+.spell.labels .label {
+  margin-bottom: 0.5em;
 }

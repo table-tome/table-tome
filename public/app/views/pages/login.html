@@ -1,0 +1,40 @@
+<div class="ui basic text segment container">
+  <div class="ui two column middle aligned very relaxed stackable grid">
+    <div class="column">
+      <div class="ui form">
+        <div class="field">
+          <label>Username</label>
+          <div class="ui left icon input">
+            <input type="text" placeholder="Username">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="ui left icon input">
+            <input type="password" placeholder="Password">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox" ng-click="keep = !keep">
+            <input type="checkbox" class="hidden">
+            <label>Keep me signed in</label>
+          </div>
+        </div>
+        <div class="ui big blue labeled icon button"><i class="sign in icon"></i>Login</div>
+      </div>
+    </div>
+    <div class="ui vertical divider">
+      Or
+    </div>
+    <div class="center aligned column">
+      <a href="/register" class="ui big green labeled icon button">
+        <i class="signup icon"></i> Sign Up
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+$('.ui.checkbox').checkbox();
+</script>

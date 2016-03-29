@@ -1,0 +1,42 @@
+<div class="ui stackable grid container">
+  <div class="five wide column" ng-include="'app/views/includes/spellbook.filters.html'"></div>
+  <div class="eleven wide column">
+    <div class="ui huge fluid icon input">
+      <input type="text" placeholder="Search by spell name..." ng-model="filters.search" />
+      <i class="search icon"></i>
+    </div>
+    <table class="ui sortable selectable celled table">
+      <thead>
+        <tr>
+          <th class="">Spell Name</th>
+          <th class="no-sort nohand">Ritual</th>
+          <th class="">Level</th>
+          <th class="">School</th>
+          <th class="no-sort nohand">Classes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-click="clicked(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter">
+          <td>{{ spell.name }}</td>
+          <td ng-switch on="spell.ritual" class="center aligned">
+            <h2 ng-switch-when="true"><i class="checkmark icon"></i></h2>
+          </td>
+          <td ng-switch on="spell.level" data-sort-value="{{ spell.level }}">
+            <span ng-switch-when="0">cantrip</span>
+            <span ng-switch-default>{{ spell.level }}</span>
+          </td>
+          <td>{{ spell.school }}</td>
+          <td>
+            <div class="ui list">
+              <div class="item" ng-repeat="class in spell.classes">{{ class }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-include src="'app/views/includes/modal.spell.html'"></ng-include>
+<script>
+$('table.sortable').tablesort();
+</script>
