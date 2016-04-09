@@ -48,7 +48,8 @@ I want to make joining the effort to develop Table Tome as easy as possible, so 
   2. Run `bower install` to install client-side dependencies.
   3. Make sure you have *MongoDB* running.
   4. Create a `.env` file using `.env.template`, filling in all of the necessary fields.
-  5. Run `heroku local` to preview the site.
+  5. Run `grunt build` to build the site.
+  6. Run `heroku local` to preview the site.
 
 ### Testing
   
