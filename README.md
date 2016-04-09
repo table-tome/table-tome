@@ -40,14 +40,28 @@ I want to make joining the effort to develop Table Tome as easy as possible, so 
   - [MongoDB](https://www.mongodb.org/)
   - [Bower](http://bower.io/) (`npm install --g bower`)
   - [Grunt](http://gruntjs.com/) (`npm install --g grunt-cli`)
+  - [Heroku Toolbelt](https://toolbelt.heroku.com/)
 
 ### Developing
 
   1. Run `npm install` to install server dependencies.
   2. Run `bower install` to install client-side dependencies.
   3. Make sure you have *MongoDB* running.
-  4. Run `grunt build` for building and `grunt serve` for previewing.
+  4. Create a `.env` file using `.env.template`, filling in all of the necessary fields.
+  5. Run `heroku local` to preview the site.
 
 ### Testing
   
-Running `npm test` or `grunt test` will run the unit tests.
+Running `npm test` or `grunt test` will run the unit tests that exist.
+
+### Retrieving the Spells
+
+If you have a database account, you can get an updated version of the spells using the following command:
+
+    mongoexport --host ds059145.mlab.com:59145 --db heroku_j3rtcl39 -u <username> -p <password> --collection spells --out spells.json
+
+If you do not have a database account, there is a `spells.json` file that should contain all of the official spells that have been entered into the database. If it seems out of date, create a github issue and I'll make sure I get it updated ASAP.
+
+You can import the spells into your local mongo database using the following command:
+
+    mongoimport --db tabletome --collection spells --file spells.json
