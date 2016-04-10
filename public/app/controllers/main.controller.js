@@ -1,8 +1,9 @@
 angular.module('main.controller', [])
-  .controller('mainCtrl', ['$scope', function($scope) {
+  .controller('mainCtrl', ['$scope', '$filter', function($scope, $filter) {
 
     $scope.sidebar = function() {
-    	$('.ui.sidebar').sidebar('toggle');
+      $('.ui.sidebar').sidebar('toggle');
     };
 
   }]);
+  

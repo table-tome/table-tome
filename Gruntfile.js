@@ -20,4 +20,6 @@ module.exports = function(grunt) {
     grunt.log.write('temp test placeholder');
   });
 
+  grunt.registerTask('build', ['wiredep']);
+
 };

@@ -7,7 +7,8 @@
     "angular-route": "^1.5.3",
     "angular-markdown-directive": "^0.3.1",
     "underscore": "^1.8.3",
-    "jquery-tablesort": "^0.0.6"
+    "jquery-tablesort": "^0.0.6",
+    "angular-md5": "^0.1.10"
   },
   "overrides": {
     "semantic": {

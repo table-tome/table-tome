@@ -1,0 +1,161 @@
+<!-- BEGIN import table css for markdown tables -->
+<link rel="stylesheet" href="assets/css/table.css" />
+<!-- END import table css -->
+<form class="ui container form" ng-submit="submit()">
+  <h4 class="ui dividing header">Spell</h4>
+  <div class="field">
+    <label>Spell Name</label>
+    <input type="text" name="name" ng-model="newSpell.name" placeholder="Spell Name" required />
+  </div>
+  <div class="field">
+    <div class="ui toggle checkbox" ng-click="newSpell.ritual = !newSpell.ritual">
+      <input type="checkbox" class="hidden">
+      <label>Ritual</label>
+    </div>
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <label>Level</label>
+      <select class="ui fluid dropdown" name="level" ng-model="newSpell.level" required>
+        <option value="">Select Level...</option>
+        <option value="0">Cantrip</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Classes</label>
+      <select class="ui fluid dropdown" name="classes" multiple="" ng-model="newSpell.classes" required>
+        <option value="">Select Class...</option>
+        <option value="bard">Bard</option>
+        <option value="cleric">Cleric</option>
+        <option value="druid">Druid</option>
+        <option value="paladin">Paladin</option>
+        <option value="ranger">Ranger</option>
+        <option value="sorcerer">Sorcerer</option>
+        <option value="warlock">Warlock</option>
+        <option value="wizard">Wizard</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>School</label>
+      <select class="ui fluid dropdown" name="school" ng-model="newSpell.school" required>
+        <option value="">Select School...</option>
+        <option value="abjuration">Abjuration</option>
+        <option value="conjuration">Conjuration</option>
+        <option value="divination">Divination</option>
+        <option value="enchantment">Enchantment</option>
+        <option value="evocation">Evocation</option>
+        <option value="illusion">Illusion</option>
+        <option value="necromancy">Necromancy</option>
+        <option value="transmutation">Transmutation</option>
+      </select>
+    </div>
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <label>Casting Time</label>
+      <input type="text" placeholder="Casting Time" name="castingTime" ng-model="newSpell.castingTime" required />
+    </div>
+    <div class="field">
+      <label>Duration</label>
+      <input type="text" placeholder="Duration" name="duration" ng-model="newSpell.duration" required />
+    </div>
+    <div class="field">
+      <label>Range</label>
+      <input type="text" placeholder="Range" name="range" ng-model="newSpell.range" required />
+    </div>
+  </div>
+  <div class="field">
+    <label>Components</label>
+    <div class="fields">
+      <div class="three wide field">
+        <div class="grouped fields">
+          <div class="field">
+            <div class="ui toggle checkbox" ng-click="newSpell.components.verbal = !newSpell.components.verbal">
+              <input type="checkbox" class="hidden">
+              <label>Verbal</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui toggle checkbox" ng-click="newSpell.components.somatic = !newSpell.components.somatic">
+              <input type="checkbox" class="hidden">
+              <label>Somatic</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui toggle checkbox" ng-click="newSpell.components.material.has = !newSpell.components.material.has">
+              <input type="checkbox" class="hidden">
+              <label>Material</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="thirteen wide field" ng-if="newSpell.components.material.has">
+        <label>Material Components</label>
+        <input type="text" required ng-model="newSpell.components.material.items" placeholder="Material Components..."/>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Description</label>
+    <textarea ng-model="newSpell.description" name="description" required>
+    </textarea>
+  </div>
+  <div class="field">
+    <button class="ui fluid brown button" type="button" ng-click="showExample()">Show Example Description Formatting</button>
+  </div>
+  <div class="field">
+    <label>Preview Description</label>
+    <div class="ui black text segment" btf-markdown="newSpell.description"></div>
+  </div>
+  <h4 class="ui dividing header">Metadata</h4>
+  <div class="field">
+    <label>Source</label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <select class="ui fluid dropdown" name="sourceName" ng-model="newSpell.source.name" required>
+          <option value="">Select Source...</option>
+          <option value="phb">Official Player's Handbook</option>
+          <option value="ee">Elemental Evil</option>
+        </select>
+      </div>
+      <div class="four wide field">
+        <input type="number" placeholder="Page Number" name="sourcePage" ng-model="newSpell.source.page" required />
+      </div>
+    </div>
+  </div>
+  <div class="ui green text segment">
+    <div class="inline fields" style="margin-bottom: 0;">
+      <div class="field">
+        <button class="ui blue button" type="button" ng-click="preview()"><i class="external icon"></i> Preview</button>
+      </div>
+      <div class="field">
+        <input type="password" ng-model="submitPassword" placeholder="Password" name="password" required />
+      </div>
+      <div class="field">
+        <button class="ui green button" type="submit">Submit</button>
+      </div>
+    </div>
+    <div class="ui error message"></div>
+    <div class="ui customError message" ng-if="customError != ''">
+      <ul class="list">
+        <li>{{ customError }}</li>
+      </ul>
+    </div>
+  </div>
+</form>
+<ng-include src="'app/views/includes/spell_contribution/modal.create.html'"></ng-include>
+<ng-include src="'app/views/includes/spell_contribution/modal.description.html'"></ng-include>
+<ng-include src="'app/views/includes/spell_contribution/modal.success.html'"></ng-include>
+<script>
+$('.ui.checkbox').checkbox();
+$('select.dropdown').dropdown();
+</script>

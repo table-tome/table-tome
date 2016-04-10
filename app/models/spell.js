@@ -23,10 +23,18 @@ var classes = [
   'wizard'
 ];
 
+var sources = [
+  'phb',
+  'ee'
+];
+
 var SpellSchema = new Schema({
-	// metadata
-	// 	* source or author (user)?
-	// spell information
+  // metadata
+  // will only exist if this is a custom spell
+  author: { type: String },
+  // will only exist if this is an official spell
+  source: { name: { type: String, required: true }, page: { type: Number, required: true } },
+  // spell information
   name: { type: String, required: true },
   level: { type: Number, required: true, min: 0, max: 9 },
   school: { type: String, required: true, enum: schools },

@@ -1,0 +1,31 @@
+<!-- BEGIN import table css for markdown tables -->
+<link rel="stylesheet" href="assets/css/table.css" />
+<!-- END import table css -->
+<div class="ui basic fullscreen modal example">
+  <div class="header">
+    Example Description Content
+  </div>
+  <div class="content">
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui form segment">
+          <div class="ui field">
+            <textarea ng-model="exampleDescription" style="color: rgba(0,0,0,.87);"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui segment green" style="color: rgba(0,0,0,.87);" btf-markdown="exampleDescription">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui green basic inverted button" ng-click="print()">
+      <i class="print icon"></i> Print to Console
+    </button>
+    <button ng-click="closeExample()" class="ui red basic inverted button">
+      <i class="close icon"></i> Close
+    </button>
+  </div>
+</div>
