@@ -23,9 +23,15 @@ var classes = [
   'wizard'
 ];
 
+var sources = [
+  'phb',
+  'ee'
+];
+
 var SpellSchema = new Schema({
 	// metadata
-	// 	* source or author (user)?
+	author: { type: String },
+  source: { name: { type: String, required: true }, page: {type: Number, required: true } },
 	// spell information
   name: { type: String, required: true },
   level: { type: Number, required: true, min: 0, max: 9 },
