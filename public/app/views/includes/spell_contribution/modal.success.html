@@ -1,0 +1,27 @@
+<!-- BEGIN import table css for markdown tables -->
+<link rel="stylesheet" href="assets/css/table.css" />
+<!-- END import table css -->
+<div class="ui small basic modal success">
+  <div class="header">
+    Spell Created!
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="wizard icon"></i>
+    </div>
+    <div class="description">
+      <p>You just added a spell to Table Tome! Thank you for helping! Now you can either visit the Tome to view the spell, or contribute another!</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button ng-click="visitSpellbook()" class="ui blue basic inverted button">
+      <i class="book icon"></i> Visit Spellbook
+    </button>
+    <button ng-click="resetForm()" class="ui green basic inverted button">
+      <i class="write icon"></i> Make Another Contribution
+    </button>
+  </div>
+</div>
+<script>
+$('.ui.dropdown').dropdown();
+</script>

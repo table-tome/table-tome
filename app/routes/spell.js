@@ -17,25 +17,41 @@ module.exports = function(app, express) {
   });
 
   spellRouter.post('/create', function(req, res) {
-    var spell = new Spell();
-
-    spell.name = req.body.name; //
-    spell.level = req.body.level; //
-    spell.school = req.body.school; //
-    spell.ritual = req.body.ritual; //
-    spell.classes = req.body.classes;
-    spell.castingTime = req.body.castingTime;
-    spell.range = req.body.range;
-    spell.duration = req.body.duration;
-    spell.components = req.body.components;
-    spell.description = req.body.description;
-
-    spell.save(function(err) {
-      if (err) return res.send(err);
-      res.json({
-        message: 'Spell created!'
+    var pass = req.body.pass;
+    if (req.body.pass === process.env.CONTRIBUTE_PASS) {
+      Spell.findOne({ name: req.body.spell.name }, function(err, found) {
+        if (!found) {
+          var spell = new Spell();
+          spell.source = req.body.spell.source;
+          spell.name = req.body.spell.name;
+          spell.level = req.body.spell.level;
+          spell.school = req.body.spell.school;
+          spell.ritual = req.body.spell.ritual;
+          spell.classes = req.body.spell.classes;
+          spell.castingTime = req.body.spell.castingTime;
+          spell.range = req.body.spell.range;
+          spell.duration = req.body.spell.duration;
+          spell.components = req.body.spell.components;
+          spell.description = req.body.spell.description;
+          spell.save(function(err) {
+            if (err) return res.send(err);
+            res.json({
+              status: 'success'
+            });
+          });
+        } else {
+          res.json({
+            status: 'error',
+            message: 'The spell you are adding already exists in Table Tome, check the spellbook before attempting to contribute another'
+          });
+        }
       });
-    });
+    } else {
+      res.json({
+        status: 'error',
+        message: 'Incorrect password, you must provide the correct password to contribute a spell'
+      });
+    }
   });
 
   return spellRouter;

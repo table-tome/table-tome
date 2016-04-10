@@ -1,7 +1,7 @@
 <!-- BEGIN import table css for markdown tables -->
 <link rel="stylesheet" href="assets/css/table.css" />
 <!-- END import table css -->
-<form class="ui container form" novalidate>
+<form class="ui container form" ng-submit="submit()">
   <h4 class="ui dividing header">Spell</h4>
   <div class="field">
     <label>Spell Name</label>
@@ -99,7 +99,8 @@
         </div>
       </div>
       <div class="thirteen wide field" ng-if="newSpell.components.material.has">
-        <input type="text" required ng-model="newSpell.components.material.items" placeholder="Material Components..." />
+        <label>Material Components</label>
+        <input type="text" required ng-model="newSpell.components.material.items" placeholder="Material Components..."/>
       </div>
     </div>
   </div>
@@ -109,7 +110,7 @@
     </textarea>
   </div>
   <div class="field">
-    <button class="ui blue button" type="button" ng-click="showExample()">Preview</button>
+    <button class="ui fluid brown button" type="button" ng-click="showExample()">Show Example Description Formatting</button>
   </div>
   <div class="field">
     <label>Preview Description</label>
@@ -140,106 +141,21 @@
         <input type="password" ng-model="submitPassword" placeholder="Password" name="password" required />
       </div>
       <div class="field">
-        <input class="ui green button" type="submit" ng-click="submit()" />
+        <button class="ui green button" type="submit">Submit</button>
       </div>
     </div>
     <div class="ui error message"></div>
+    <div class="ui customError message" ng-if="customError != ''">
+      <ul class="list">
+        <li>{{ customError }}</li>
+      </ul>
+    </div>
   </div>
 </form>
-<ng-include src="'app/views/includes/modal.create.html'"></ng-include>
-<ng-include src="'app/views/includes/modal.description.html'"></ng-include>
+<ng-include src="'app/views/includes/spell_contribution/modal.create.html'"></ng-include>
+<ng-include src="'app/views/includes/spell_contribution/modal.description.html'"></ng-include>
+<ng-include src="'app/views/includes/spell_contribution/modal.success.html'"></ng-include>
 <script>
 $('.ui.checkbox').checkbox();
 $('select.dropdown').dropdown();
-$('.ui.form').form({
-  fields: {
-    name: {
-      identifier: 'name',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter the spell name'
-      }]
-    },
-    level: {
-      identifier: 'level',
-      rules: [{
-        type: 'empty',
-        prompt: 'You must select a level'
-      }]
-    },
-    classes: {
-      identifier: 'classes',
-      rules: [{
-        type: 'empty',
-        prompt: 'You must select at least one class'
-      }]
-    },
-    school: {
-      identifier: 'school',
-      rules: [{
-        type: 'empty',
-        prompt: 'You must select a school'
-      }]
-    },
-    castingTime: {
-      identifier: 'castingTime',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter a casting time'
-      }]
-    },
-    duration: {
-      identifier: 'duration',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter a duration'
-      }]
-    },
-    range: {
-      identifier: 'range',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter a range'
-      }]
-    },
-    duration: {
-      identifier: 'duration',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter a duration'
-      }]
-    },
-    description: {
-      identifier: 'description',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter the spell description'
-      }]
-    },
-    sourceName: {
-      identifier: 'sourceName',
-      rules: [{
-        type: 'empty',
-        prompt: 'Please enter the spell\'s source'
-      }]
-    },
-    sourcePage: {
-      identifier: 'sourcePage',
-      rules: [{
-        type: 'integer',
-        prompt: 'The spell\'s page must be an integer'
-      }, {
-        type: 'empty',
-        prompt: 'Please enter the page that the spell is found on'
-      }]
-    },
-    password: {
-      identifier: 'password',
-      rules: [{
-        type: 'empty',
-        prompt: 'You must provide the password'
-      }]
-    }
-  }
-});
 </script>

@@ -14,9 +14,9 @@ angular.module('tabletome.routes', ['ngRoute'])
       	templateUrl: 'app/views/pages/spellbook.html',
       	controller: 'spellbookCtrl'
       })
-      .when('/create', {
-        templateUrl: 'app/views/pages/create.html',
-        controller: 'createCtrl'
+      .when('/contribute', {
+        templateUrl: 'app/views/pages/contribute.html',
+        controller: 'contributeCtrl'
       })
       .otherwise({
       	templateUrl: 'app/views/pages/404.html'
