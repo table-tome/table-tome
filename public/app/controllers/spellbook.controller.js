@@ -56,9 +56,9 @@ angular.module('spellbook.controller', ['spell.service'])
     $scope.clicked = function(spell) {
       console.log(spell);
       $scope.clickedSpell = spell;
-      $(".ui.modal").modal({
+      $(".ui.modal.spell").modal({
           onVisible: function() {
-            $(".ui.modal").modal("refresh");
+            $(".ui.modal.spell").modal("refresh");
           }
         }).modal("show");
     };
