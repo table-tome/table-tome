@@ -26,6 +26,9 @@
         <i class="book icon"></i> {{ clickedSpell.source.name }}
         <div class="detail">{{ clickedSpell.source.page }}</div>
       </div>
+      <div class="ui large pink label" ng-if="clickedSpell.author">
+        <i class="write icon"></i> {{ clickedSpell.source.author }}
+      </div>
     </div>
     <table class="ui celled padded green table">
       <thead>
