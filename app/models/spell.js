@@ -24,8 +24,8 @@ var classes = [
 ];
 
 var sources = [
-  "Player's Handbook",
-  'Elemental Evil'
+  "player's handbook",
+  'elemental evil'
 ];
 
 var SpellSchema = new Schema({
@@ -33,9 +33,9 @@ var SpellSchema = new Schema({
   // will only exist if this is a custom spell
   author: { type: String },
   // will only exist if this is an official spell
-  source: { name: { type: String, required: true }, page: { type: Number, required: true } },
+  source: { name: { type: String, required: true, enum: sources }, page: { type: Number, required: true } },
   // will only exist if this is a custom spell created by a user
-  author: { name: { type: String, required: true } }
+  author: { name: { type: String, required: true } },
   // spell information
   name: { type: String, required: true },
   level: { type: Number, required: true, min: 0, max: 9 },
