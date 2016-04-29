@@ -34,6 +34,8 @@ var SpellSchema = new Schema({
   author: { type: String },
   // will only exist if this is an official spell
   source: { name: { type: String, required: true }, page: { type: Number, required: true } },
+  // will only exist if this is a custom spell created by a user
+  author: { name: { type: String, required: true } }
   // spell information
   name: { type: String, required: true },
   level: { type: Number, required: true, min: 0, max: 9 },
