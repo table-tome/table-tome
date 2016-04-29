@@ -24,8 +24,8 @@ var classes = [
 ];
 
 var sources = [
-  'phb',
-  'ee'
+  "Player's Handbook",
+  'Elemental Evil'
 ];
 
 var SpellSchema = new Schema({
