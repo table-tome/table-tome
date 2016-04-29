@@ -3,7 +3,7 @@ angular.module('spell.service', [])
   	var spellFactory = { spells: [] };
 
   	spellFactory.update = function() {
-  		$http.get('/api/spell/all').success(function(data) {
+  		$http.get('/api/spells/').success(function(data) {
   			angular.copy(data, spellFactory.spells);
   		});
   	};

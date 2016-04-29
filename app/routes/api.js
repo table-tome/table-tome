@@ -1,14 +1,14 @@
 module.exports = function(app, express) {
-	var api = express.Router();
+  var api = express.Router();
 
-	api.get('/', function(req, res) {
+  api.get('/', function(req, res) {
     res.json({
       message: 'Welcome to the Table Tome API!'
     })
   });
 
-	var spellRouter = require('./spell')(app, express);
-	api.use('/spell', spellRouter);
+  var spellRouter = require('./spell')(app, express);
+  api.use('/spells', spellRouter);
 
-	return api;
+  return api;
 };
