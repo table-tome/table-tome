@@ -52,7 +52,7 @@ I want to make joining the effort to develop Table Tome as easy as possible, so 
   6. Run `heroku local` to preview the site.
 
 ### Testing
-  
+
 Running `npm test` or `grunt test` will run the unit tests that exist.
 
 ### Retrieving the Spells
@@ -65,4 +65,4 @@ If you do not have a database account, there is a `spells.json` file that should
 
 You can import the spells into your local mongo database using the following command:
 
-    mongoimport --db tabletome --collection spells --file spells.json
+    mongoimport --db tabletome --collection spells --drop --file spells.json
