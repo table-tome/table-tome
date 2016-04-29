@@ -23,6 +23,7 @@ module.exports = function(app, express) {
         if (!found) {
           var spell = new Spell();
           spell.source = req.body.spell.source;
+          spell.author = req.body.spell.author;
           spell.name = req.body.spell.name;
           spell.level = req.body.spell.level;
           spell.school = req.body.spell.school;
