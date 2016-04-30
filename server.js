@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var jwt = require('express-jwt');
 var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -10,15 +11,15 @@ var mongoose = require('mongoose');
 // =================
 
 app.use(bodyParser.urlencoded({
-	extended: true
+  extended: true
 }));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-AllowMethods', 'GET, POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
-	next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-AllowMethods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
+  next();
 });
 
 app.use(morgan('dev'));
@@ -28,7 +29,12 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/assets/img/table-tome-logo.png'));
 
-mongoose.connect(process.env.MONGOLAB_URI)
+mongoose.connect(process.env.MONGOLAB_URI);
+
+var jwtCheck = jwt({
+  secret: new Buffer(process.env.AUTH0_CLIENT_SECRET, 'base64'),
+  audience: process.env.AUTH0_CLIENT_ID
+});
 
 // ROUTES
 // ======
