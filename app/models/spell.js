@@ -24,7 +24,7 @@ var classes = [
 ];
 
 var sources = [
-  "player's handbook",
+  'player\'s handbook',
   'elemental evil'
 ];
 
