@@ -57,10 +57,34 @@ angular.module('spellbook.controller', ['spell.service'])
       console.log(spell);
       $scope.clickedSpell = spell;
       $(".ui.modal.spell").modal({
-          onVisible: function() {
-            $(".ui.modal.spell").modal("refresh");
-          }
-        }).modal("show");
+        onVisible: function() {
+          $(".ui.modal.spell").modal("refresh");
+        }
+      }).modal("show");
+    };
+
+    $scope.spellLists = {
+      create: {
+        name: null,
+        show: function() {
+          $("#spell-list-create-modal")
+            .modal({
+              closable: false
+            })
+            .modal("show");
+        },
+        submit: function() {
+          console.log("Creating spell lists named " + $scope.spellLists.create.name);
+          $scope.spellLists.create.reset();
+        },
+        cancel: function() {
+          $("#spell-list-create-modal").modal("hide");
+          $scope.spellLists.create.reset();
+        },
+        reset: function() {
+          $scope.spellLists.create.name = null;
+        }
+      }
     };
 
   }]);

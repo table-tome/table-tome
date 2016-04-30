@@ -2,7 +2,7 @@
   <div class="ui large header item">Spell Lists</div>
   <div class="field item">
     <div class="ui fluid vertical labeled icon buttons">
-      <button class="ui fluid green button"><i class="plus icon"></i> Create List</button>
+      <button class="ui fluid green button" ng-click="spellLists.create.show()"><i class="plus icon"></i> Create List</button>
       <button class="ui fluid teal button"><i class="write icon"></i>Edit Lists</button>
     </div>
   </div>
@@ -15,6 +15,7 @@
     </select>
   </div>
 </div>
+<ng-include src="'app/views/includes/spell_lists/modal.create.html'"></ng-include>
 <script>
 $('select.dropdown').dropdown();
 </script>
