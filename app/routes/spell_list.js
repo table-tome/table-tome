@@ -3,6 +3,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
 
   listRouter.use('/', authenticate);
 
+  // route to get all of the current user's spell lists
   listRouter.get('/', function(req, res) {
     var user_id = req.user.sub;
     // get the current user's information using their ID provided 
@@ -16,6 +17,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     });
   });
 
+  // route to create a new empty spell list for the user that is currently authenticated
   listRouter.post('/', function(req, res) {
     var user_id = req.user.sub;
     // make sure the new list name isn't undefined
