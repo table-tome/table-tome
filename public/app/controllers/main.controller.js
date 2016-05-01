@@ -8,7 +8,6 @@ angular.module('main.controller', [])
         console.log(profile);
         store.set('profile', profile);
         store.set('token', id_token);
-        $location.path('/');
       }, function() {
         // TODO handle when login fails
       })
@@ -18,8 +17,7 @@ angular.module('main.controller', [])
       auth.signout();
       store.remove('profile');
       store.remove('token');
-      $location.path('/');
-    }
+    };
 
     $scope.sidebar = function() {
       $('.ui.sidebar').sidebar('toggle');

@@ -51,11 +51,12 @@
           <td>{{ clickedSpell.range }}</td>
           <td>{{ clickedSpell.duration }}</td>
           <td>
-            <div class="ui red label" ng-if="clickedSpell.components.verbal">verbal</div>
-            <div class="ui orange label" ng-if="clickedSpell.components.somatic">somatic</div>
-            <div class="ui brown label" ng-if="clickedSpell.components.material.has">
-              material
-              <div class="detail">{{ clickedSpell.components.material.items }}</div>
+            <div class="ui list">
+              <div class="item" ng-if="clickedSpell.components.verbal">verbal</div>
+              <div class="item" ng-if="clickedSpell.components.somatic">somatic</div>
+              <div class="item" ng-if="clickedSpell.components.material.has">
+                material: <em>{{ clickedSpell.components.material.items }}</em></div>
+              </div>
             </div>
           </td>
         </tr>

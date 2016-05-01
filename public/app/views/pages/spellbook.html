@@ -1,6 +1,6 @@
 <div class="ui stackable grid container">
   <div class="five wide column">
-    <div ng-include="'app/views/includes/spell_lists/spellbook.lists.html'"></div>
+    <div ng-if="auth.isAuthenticated" ng-include="'app/views/includes/spell_lists/spellbook.lists.html'"></div>
     <div ng-include="'app/views/includes/spellbook.filters.html'"></div>
   </div>
   <div id="spell-table" class="eleven wide column">

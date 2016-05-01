@@ -3,7 +3,7 @@
     <img class="ui avatar image" src="../../assets/img/table-tome-logo.png"> Table Tome
   </a>
   <a class="item" ng-click="sidebar()" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
-  <a class="item" href="https://blog.tabletome.com/"><i class="write icon"></i> Blog</a>
+  <a class="item" href="https://blog.tabletome.com/" target="_blank"><i class="write icon"></i> Blog</a>
 </div>
 <!-- end sidebar -->
 <div class="ui fixed inverted menu">
@@ -16,9 +16,9 @@
       <img class="logo" src="../../assets/img/table-tome-logo.png"> Table Tome
     </a>
     <a class="ui item hide" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
-    <a class="ui item hide" href="https://blog.tabletome.com/"><i class="write icon"></i> Blog</a>
+    <a class="ui item hide" href="https://blog.tabletome.com/" target="_blank"><i class="write icon"></i> Blog</a>
     <div class="right menu">
-      <a class="ui item" ng-click="login()" ng-if="!auth.isAuthenticated">Login</a>
+      <a class="ui item" ng-click="login()" ng-if="!auth.isAuthenticated"><i class="sign in icon"></i> Login</a>
       <div class="ui simple dropdown item" ng-if="auth.isAuthenticated">
         <img class="ui avatar image" ng-src="{{ auth.profile.picture }}" />&nbsp;{{ auth.profile.nickname }} <i class="dropdown icon"></i>
         <div class="menu">
