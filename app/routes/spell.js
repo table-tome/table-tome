@@ -1,6 +1,6 @@
 var Spell = require('../models/spell');
 
-module.exports = function(app, express) {
+module.exports = function(app, express, authenticate) {
   var spellRouter = express.Router();
 
   spellRouter.get('/', function(req, res) {

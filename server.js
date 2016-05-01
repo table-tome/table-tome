@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var jwt = require('express-jwt');
+var jwtGenerator = require('jsonwebtoken');
 var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -31,18 +32,28 @@ app.use(favicon(__dirname + '/public/assets/img/table-tome-logo.png'));
 
 mongoose.connect(process.env.MONGOLAB_URI);
 
-var jwtCheck = jwt({
+// AUTHENTICATION
+// --------------
+var authenticate = jwt({
   secret: new Buffer(process.env.AUTH0_CLIENT_SECRET, 'base64'),
   audience: process.env.AUTH0_CLIENT_ID
+});
+
+// AUTH0 MANAGEMENT
+// ----------------
+var ManagementClient = require('auth0').ManagementClient;
+var auth0Manager = new ManagementClient({
+  token: process.env.AUTH0_API_TOKEN,
+  domain: process.env.AUTH0_DOMAIN
 });
 
 // ROUTES
 // ======
 
-// SPELL ROUTES
-// ------------
+// API ROUTES
+// ----------
 
-var api = require('./app/routes/api')(app, express);
+var api = require('./app/routes/api')(app, express, authenticate, auth0Manager);
 app.use('/api', api);
 
 // MAIN CATCHALL

@@ -5,7 +5,7 @@ angular.module('main.controller', [])
     
     $scope.login = function() {
       auth.signin({}, function(profile, id_token) {
-        console.log(profile);
+        console.log(id_token);
         store.set('profile', profile);
         store.set('token', id_token);
       }, function() {
