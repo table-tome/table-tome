@@ -34,8 +34,8 @@ angular.module('tabletome', [
   .run(function($rootScope, auth, store, jwtHelper, $location) {
     // auth0 login stuff
     auth.init({
-      domain: 'app47270198.auth0.com',
-      clientID: 'h1L6V5X1y1Jf2SCEsaBja7oLTiE8EL9C'
+      domain: AUTH0_DOMAIN,
+      clientID: AUTH0_CLIENT_ID
     });
     auth.hookEvents();
     $rootScope.$on('$locationChangeStart', function() {
