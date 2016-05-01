@@ -18,8 +18,16 @@
     <a class="ui item hide" href="/spellbook"><i class="wizard icon"></i> Spellbook</a>
     <a class="ui item hide" href="https://blog.tabletome.com/"><i class="write icon"></i> Blog</a>
     <div class="right menu">
-      <a class="ui item" ng-click="auth.signin()">Login</a>
-      <a class="ui item" ng-click="logout()">Logout</a>
+      <a class="ui item" ng-click="login()" ng-if="!auth.isAuthenticated">Login</a>
+      <div class="ui simple dropdown item" ng-if="auth.isAuthenticated">
+        <img class="ui avatar image" ng-src="{{ auth.profile.picture }}" />&nbsp;{{ auth.profile.nickname }} <i class="dropdown icon"></i>
+        <div class="menu">
+          <!-- <a class="item" href="#">Profile</a> -->
+          <!-- <a class="item" href="#">Settings</a> -->
+          <div class="divider"></div>
+          <a class="item" href="/" ng-click="logout()"><i class="sign out icon"></i> Logout</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

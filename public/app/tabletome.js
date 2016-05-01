@@ -21,35 +21,24 @@ angular.module('tabletome', [
     markdownConverterProvider.config({
       extensions: ['table']
     });
-
-    // auth0 login stuff
-    authProvider.init({
-      domain: 'app47270198.auth0.com',
-      clientID: 'h1L6V5X1y1Jf2SCEsaBja7oLTiE8EL9C'
-    });
-
-    authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
-      console.log("Login Success");
-      profilePromise.then(function(profile) {
-        store.set('profile', profile);
-        store.set('token', idToken);
-      });
-      $location.path('/');
-    });
-    authProvider.on('loginFailure', function() {
-      alert("Error");
-    });
-
+    
     jwtInterceptorProvider.tokenGetter = function(store) {
       return store.get('token');
-    };
+    }
 
+    // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
+    // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
+    // want to check the delegation-token example
     $httpProvider.interceptors.push('jwtInterceptor');
   })
   .run(function($rootScope, auth, store, jwtHelper, $location) {
+    // auth0 login stuff
+    auth.init({
+      domain: 'app47270198.auth0.com',
+      clientID: 'h1L6V5X1y1Jf2SCEsaBja7oLTiE8EL9C',
+      loginUrl: '/'
+    });
     auth.hookEvents();
-
-
     $rootScope.$on('$locationChangeStart', function() {
 
       var token = store.get('token');
