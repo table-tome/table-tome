@@ -12,5 +12,9 @@ angular.module('list.service', [])
   		return $http.post('/api/spell_lists', { list_name: name });
   	};
 
+  	factory.append = function(name, id) {
+  		return $http.post('/api/spell_lists/' + name, { spell_id: id });
+  	}
+
   	return factory;
   }]);

@@ -70,7 +70,7 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       filter: function(spell) {
         // if no specific list selected or the spell id is in the list
         if ($scope.spellLists.selected === "all" ||
-          _.indexOf($scope.spellLists.selected.list, spell._id) > -1) return spell;
+          _.indexOf($scope.spellLists.lists[$scope.spellLists.selected].list, spell._id) > -1) return spell;
       },
       update: function() {
         SpellLists.get().success(function(data) {
@@ -102,11 +102,13 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
         reset: function() {
           $scope.spellLists.create.name = null;
         }
+      },
+      append: function(list, id) {
+        console.log(list + ": " + id);
+        SpellLists.append(list, id).success(function(data) {
+          $scope.spellLists.lists = data;
+        });
       }
-    };
-
-    $scope.listChanged = function() {
-      console.log($scope.spellLists.selected);
     };
 
     $scope.spellLists.update();

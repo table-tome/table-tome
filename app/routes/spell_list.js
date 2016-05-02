@@ -63,5 +63,51 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     });
   });
 
+  // route to add a spell id to an existing list
+  listRouter.post('/:list', function(req, res) {
+    var user_id = req.user.sub;
+    var list_name = req.params.list;
+    var spell_id = req.body.spell_id;
+
+    if (!spell_id) {
+      res.send("No spell id was sent in the body");
+      return;
+    }
+
+    auth0Manager.getUser({ id: user_id }, function(err, user) {
+      if (err) res.send(err);
+      else {
+        var lists = null;
+        if (user.user_metadata && user.user_metadata.spell_lists)
+          lists = user.user_metadata.spell_lists;
+
+        if (lists === null) {
+          res.send("User has no lists to append to");
+          return;
+        }
+
+        var found = false;
+        for (i in lists) {
+          if (lists[i].name === list_name) {
+            found = true;
+
+            lists[i].list.push(spell_id);
+            var metadata = { spell_lists: lists };
+            auth0Manager.updateUserMetadata({ id: user_id }, metadata, function(err, user) {
+              if (err) res.send(err);
+              else {
+                console.log(user.user_metadata.spell_lists);
+                res.send(user.user_metadata.spell_lists);
+              }
+            });
+          }
+        }
+        if (!found) {
+          res.send("User does not have a list named " + list_name);
+        }
+      }
+    });
+  });
+
   return listRouter;
 };
