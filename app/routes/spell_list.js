@@ -34,6 +34,12 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         if (user.user_metadata && user.user_metadata.spell_lists)
           lists = user.user_metadata.spell_lists;
 
+        // make sure the list isn't called "All Lists"
+        if ($req.body.list_name === "All Lists") {
+          res.send("A spell list cannot be named " + $req.body.list_name);
+          return;
+        }
+
         // make sure that no other list has the same name
         for (i in lists) {
           if (lists[i].name === req.body.list_name) {

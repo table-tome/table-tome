@@ -1,7 +1,8 @@
-angular.module('spellbook.controller', ['spell.service'])
-  .controller('spellbookCtrl', ['$scope', 'Spells', function($scope, Spells) {
+angular.module('spellbook.controller', ['spell.service', 'list.service'])
+  .controller('spellbookCtrl', ['$scope', 'Spells', 'SpellLists', function($scope, Spells, SpellLists) {
 
     $scope.spells = Spells.spells;
+    console.log($scope.spells[1]);
 
     $scope.filters = {
       search: "",
@@ -64,6 +65,18 @@ angular.module('spellbook.controller', ['spell.service'])
     };
 
     $scope.spellLists = {
+      lists: [],
+      selected: "all",
+      filter: function(spell) {
+        // if no specific list selected or the spell id is in the list
+        if ($scope.spellLists.selected === "all" ||
+          _.indexOf($scope.spellLists.selected.list, spell._id) > -1) return spell;
+      },
+      update: function() {
+        SpellLists.get().success(function(data) {
+          $scope.spellLists.lists = data;
+        });
+      },
       create: {
         name: null,
         show: function() {
@@ -75,7 +88,12 @@ angular.module('spellbook.controller', ['spell.service'])
         },
         submit: function() {
           console.log("Creating spell lists named " + $scope.spellLists.create.name);
-          $scope.spellLists.create.reset();
+          SpellLists.create($scope.spellLists.create.name).success(function(data) {
+            $scope.spellLists.lists = data;
+            console.log($scope.spellLists);
+            $scope.spellLists.create.reset();
+          });
+          $("#spell-list-create-modal").modal("hide");
         },
         cancel: function() {
           $("#spell-list-create-modal").modal("hide");
@@ -86,5 +104,11 @@ angular.module('spellbook.controller', ['spell.service'])
         }
       }
     };
+
+    $scope.listChanged = function() {
+      console.log($scope.spellLists.selected);
+    };
+
+    $scope.spellLists.update();
 
   }]);

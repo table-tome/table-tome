@@ -6,6 +6,7 @@ angular.module('tabletome', [
     'contribute.controller',
     // services
     'spell.service',
+    'list.service',
     // markdown display
     'ngSanitize',
     'btford.markdown',
