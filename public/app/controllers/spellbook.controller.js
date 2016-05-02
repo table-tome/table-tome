@@ -1,8 +1,12 @@
 angular.module('spellbook.controller', ['spell.service', 'list.service'])
   .controller('spellbookCtrl', ['$scope', 'Spells', 'SpellLists', function($scope, Spells, SpellLists) {
 
-    $scope.spells = Spells.spells;
-    console.log($scope.spells[1]);
+    $scope.spells = [];
+    $scope.getSpells = function() {
+      Spells.get().success(function(data) {
+        $scope.spells = data;
+      });
+    };
 
     $scope.filters = {
       search: "",
@@ -70,7 +74,10 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       filter: function(spell) {
         // if no specific list selected or the spell id is in the list
         if ($scope.spellLists.selected === "all" ||
-          _.indexOf($scope.spellLists.lists[$scope.spellLists.selected].list, spell._id) > -1) return spell;
+          _.indexOf($scope.spellLists.lists[$scope.spellLists.selected].list, spell._id) > -1) {
+          return spell;
+        }
+
       },
       update: function() {
         SpellLists.get().success(function(data) {
@@ -111,6 +118,7 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       }
     };
 
+    $scope.getSpells();
     $scope.spellLists.update();
 
   }]);

@@ -1,14 +1,10 @@
 angular.module('spell.service', [])
   .factory('Spells', ['$http', function($http) {
-  	var spellFactory = { spells: [] };
+    var factory = {};
 
-  	spellFactory.update = function() {
-  		$http.get('/api/spells/').success(function(data) {
-  			angular.copy(data, spellFactory.spells);
-  		});
+  	factory.get = function() {
+  		return $http.get('/api/spells/');
   	};
 
-  	spellFactory.update();
-
-  	return spellFactory;
+  	return factory;
   }]);
