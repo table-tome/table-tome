@@ -27,8 +27,5 @@
         "src/extensions/table.js"
       ]
     }
-  },
-  "resolutions": {
-    "angular": "1.5.5"
   }
 }
