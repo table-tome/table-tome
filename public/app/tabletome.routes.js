@@ -12,9 +12,13 @@ angular.module('tabletome.routes', ['ngRoute'])
         templateUrl: 'app/views/pages/contribute.html',
         controller: 'contributeCtrl'
       })
+      .when('/u/:user_id',{
+        templateUrl: 'app/views/pages/profile.html',
+        controller: 'profileCtrl'
+      })
       .otherwise({
         templateUrl: 'app/views/pages/404.html'
       });
 
-    $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
   });
