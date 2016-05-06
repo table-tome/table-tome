@@ -12,7 +12,7 @@ angular.module('tabletome.routes', ['ngRoute'])
         templateUrl: 'app/views/pages/contribute.html',
         controller: 'contributeCtrl'
       })
-      .when('/u/:user_id',{
+      .when('/u/:username',{
         templateUrl: 'app/views/pages/profile.html',
         controller: 'profileCtrl'
       })
