@@ -1,9 +1,9 @@
 angular.module('profile.controller', [])
   .controller('profileCtrl', ['$scope', '$routeParams', 'auth', 'User', function($scope, $routeParams, auth, User) {
-
-    var username = $routeParams.username;
+    console.log($routeParams.username);
+    $scope.userUrl = $routeParams.username;
     $scope.user = null;
-    User.get(username).success(function(data) {
+    User.get($scope.userUrl).success(function(data) {
       console.log(data);
       $scope.user = data;
     });

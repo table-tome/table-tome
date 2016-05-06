@@ -107,8 +107,7 @@ th.nohand:hover {
     border-radius: 50% !important;
 }
 .pro-item{
-  border-color: black;
-  border: 2px;
+  
 }
 .customError {
   display: block;
