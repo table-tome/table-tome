@@ -28,11 +28,12 @@ angular.module('profile.controller', [])
     //   }
     // };
     User.get($scope.userUrl).success(function(data) {
-      console.log(data);
       $scope.user = data;
       if ($scope.user == []) {
         console.log("it was null");
         $scope.user = $scope.fakeUser;
+        if ($scope.user.user_metadata.spell_lists) console.log("TEST");
+        else console.log("YAY");
       }
     });
 
