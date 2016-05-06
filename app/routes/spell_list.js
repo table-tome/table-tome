@@ -35,11 +35,12 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       if (err) res.send(err);
       else {
         var lists = [];
-        if (user.user_metadata && user.user_metadata.spell_lists)
-          lists = user.user_metadata.spell_lists;
+        if (user.user_metadata /*&& user.user_metadata.spell_lists*/ ) {
+          if (user.user_metadata.spell_lists) lists = user.user_metadata.spell_lists;
+        }
 
         // make sure the list isn't called "All Lists"
-        if ($req.body.list_name === "All Lists") {
+        if (req.body.list_name === "All Lists") {
           res.send("A spell list cannot be named " + $req.body.list_name);
           return;
         }
@@ -67,6 +68,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
           if (err) res.send(err);
           else {
             // return the user's updated spell lists
+            console.log(user.user_metadata.spell_lists);
             res.send(user.user_metadata.spell_lists || []);
           }
         });
