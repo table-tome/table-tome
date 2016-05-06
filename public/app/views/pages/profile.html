@@ -5,8 +5,8 @@
         <img class="img-circle" ng-src="{{user.picture}}" />
       </div>
       <div class="content">
-        <a class="header">{{user.nickname}}</a>
-        <div class="description">{{user.user_metadata.about}}</div>
+        <a class="header">{{ user.nickname }}</a>
+        <div class="description">{{ user.user_metadata.about }}</div>
       </div>
     </div>
     <div class="ui two column grid">
@@ -15,18 +15,18 @@
           <table style="table-layout:fixed; width: 100%">
             <tr>
               <th>Name</th>
-              <th>List</th> 	
+              <th>Spells</th>
             </tr>
-            <tr ng-repeat="(k,v) in user.user_metadata.spell_lists">
-              <td>{{k}}</td>
-              <td>{{v}}</td>
+            <tr ng-repeat="list in user.user_metadata.spell_lists">
+              <td>{{ list.name }}</td>
+              <td>{{ list.list }}</td>
             </tr>
           </table>
         </div>
       </div>
     </div>
     <div class="item eight wide column">
-      {{user.user_metadata.custom_spells}}
+      {{ user.user_metadata.custom_spells }}
     </div>
   </div>
 </div>
