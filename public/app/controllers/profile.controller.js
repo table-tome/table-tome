@@ -4,7 +4,7 @@ angular.module('profile.controller', [])
     $scope.user = {
       nickname: 'Fake',
       picture: 'http://www.tribe-war.com/images/user.jpg',
-      user_id: 'fakeid123456789'
+      user_id: 'fakeid123456789',
       user_metadata: {
         spell_lists: [{
           name: 'List 1',
