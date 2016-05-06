@@ -1,8 +1,12 @@
 angular.module('profile.controller', [])
-  .controller('profileCtrl', ['$scope', 'auth', function($scope, auth) {
+  .controller('profileCtrl', ['$scope', '$routeParams', 'auth', 'User', function($scope, $routeParams, auth, User) {
 
-   $scope.auth = auth;
+    var username = $routeParams.username;
+    $scope.user = null;
+    User.get(username).success(function(data) {
+      console.log(data);
+      $scope.user = data;
+    });
 
+    $scope.auth = auth;
   }]);
-
-

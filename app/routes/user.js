@@ -19,7 +19,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
               return;
             }
           }
-          res.send("USER NOT FOUND");
+          res.send(null);
         }
       });
   });
