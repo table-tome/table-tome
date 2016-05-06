@@ -5,16 +5,16 @@ angular.module('tabletome.routes', ['ngRoute'])
         templateUrl: 'app/views/pages/home.html'
       })
       .when('/spellbook', {
-      	templateUrl: 'app/views/pages/spellbook.html',
-      	controller: 'spellbookCtrl'
+        templateUrl: 'app/views/pages/spellbook.html',
+        controller: 'spellbookCtrl'
       })
       .when('/contribute', {
         templateUrl: 'app/views/pages/contribute.html',
         controller: 'contributeCtrl'
       })
       .otherwise({
-      	templateUrl: 'app/views/pages/404.html'
+        templateUrl: 'app/views/pages/404.html'
       });
 
-      $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
   });

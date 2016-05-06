@@ -6,9 +6,11 @@ module.exports = function(app, express, authenticate, auth0Manager) {
   // route to get all of the current user's spell lists
   listRouter.get('/', function(req, res) {
     var user_id = req.user.sub;
-    // get the current user's information using their ID provided 
+    // get the current user's information using their ID provided
     //  by the authentication middleware
-    auth0Manager.getUser({ id: user_id }, function(err, user) {
+    auth0Manager.getUser({
+      id: user_id
+    }, function(err, user) {
       if (err) res.send(err);
       else {
         // return only the user's spell lists
@@ -27,7 +29,9 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     }
     // get the current user in order to update the metadata without
     //  overwriting their lists
-    auth0Manager.getUser({ id: user_id }, function(err, user) {
+    auth0Manager.getUser({
+      id: user_id
+    }, function(err, user) {
       if (err) res.send(err);
       else {
         var lists = [];
@@ -49,10 +53,17 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         }
 
         // create a new empty list, and add it to the user's metadata in auth0
-        var new_list = { name: req.body.list_name, list: [] };
+        var new_list = {
+          name: req.body.list_name,
+          list: []
+        };
         lists.push(new_list);
-        var metadata = { spell_lists: lists };
-        auth0Manager.updateUserMetadata({ id: user_id }, metadata, function(err, user) {
+        var metadata = {
+          spell_lists: lists
+        };
+        auth0Manager.updateUserMetadata({
+          id: user_id
+        }, metadata, function(err, user) {
           if (err) res.send(err);
           else {
             // return the user's updated spell lists
@@ -62,6 +73,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       }
     });
   });
+
 
   // route to add a spell id to an existing list
   listRouter.post('/:list', function(req, res) {
@@ -74,7 +86,9 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       return;
     }
 
-    auth0Manager.getUser({ id: user_id }, function(err, user) {
+    auth0Manager.getUser({
+      id: user_id
+    }, function(err, user) {
       if (err) res.send(err);
       else {
         var lists = null;
@@ -92,8 +106,12 @@ module.exports = function(app, express, authenticate, auth0Manager) {
             found = true;
 
             lists[i].list.push(spell_id);
-            var metadata = { spell_lists: lists };
-            auth0Manager.updateUserMetadata({ id: user_id }, metadata, function(err, user) {
+            var metadata = {
+              spell_lists: lists
+            };
+            auth0Manager.updateUserMetadata({
+              id: user_id
+            }, metadata, function(err, user) {
               if (err) res.send(err);
               else {
                 console.log(user.user_metadata.spell_lists);

@@ -22,7 +22,7 @@ angular.module('tabletome', [
     markdownConverterProvider.config({
       extensions: ['table']
     });
-    
+
     jwtInterceptorProvider.tokenGetter = function(store) {
       return store.get('token');
     }
