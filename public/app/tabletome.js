@@ -8,6 +8,7 @@ angular.module('tabletome', [
     // services
     'spell.service',
     'list.service',
+    'user.service',
     // markdown display
     'ngSanitize',
     'btford.markdown',
