@@ -1,8 +1,9 @@
 angular.module('profile.controller', [])
   .controller('profileCtrl', ['$scope', '$routeParams', 'auth', 'User', function($scope, $routeParams, auth, User) {
 
-    $scope.user = {
-      nickname: 'Fake',
+    $scope.userUrl = $routeParams.username;
+    $scope.fakeUser = {
+      nickname: 'No User',
       picture: 'http://www.tribe-war.com/images/user.jpg',
       user_id: 'fakeid123456789',
       user_metadata: {
@@ -21,15 +22,21 @@ angular.module('profile.controller', [])
         about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam commodo metus nec convallis facilisis. Aliquam sit amet convallis lacus. Pellentesque sit amet lacinia leo, sit amet accumsan ex. Sed eleifend ultricies tellus. Proin sit amet ullamcorper nunc. Proin mauris massa, vulputate sed orci vitae, pharetra lacinia sem. Etiam quis ipsum dolor. Suspendisse commodo, purus sit amet rutrum mollis, metus purus fermentum mi, ac consequat ligula ex nec nisl.'
       }
     };
+    // $scope.parseData = function() {
+    //   if ($scope.user == null){
+    //     $scope.user = $scope.fakeUser;
+    //   }
+    // };
+    User.get($scope.userUrl).success(function(data) {
+      console.log(data);
+      $scope.user = data;
+      if ($scope.user == []) {
+        console.log("it was null");
+        $scope.user = $scope.fakeUser;
+      }
+    });
 
-    // TODO: uncomment when editing a user is feasable
-    // var username = $routeParams.username;
-    // $scope.user = null;
-    // User.get(username).success(function(data) {
-    //   console.log(data);
-    //   console.log(auth.profile);
-    //   $scope.user = data;
-    // });
+
 
     $scope.auth = auth;
   }]);
