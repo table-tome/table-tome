@@ -22,8 +22,8 @@
       <div class="ui simple dropdown item" ng-if="auth.isAuthenticated">
         <img class="ui avatar image" ng-src="{{ auth.profile.picture }}" />&nbsp;{{ auth.profile.nickname }} <i class="dropdown icon"></i>
         <div class="menu">
-          <!-- <a class="item" href="#">Profile</a> -->
-          <!-- <a class="item" href="#">Settings</a> -->
+          <a class="item" href="/u/{{ auth.profile.nickname }}">Profile</a>
+          <a class="item" href="#">Settings</a>
           <div class="divider"></div>
           <a class="item" href="/" ng-click="logout()"><i class="sign out icon"></i> Logout</a>
         </div>
