@@ -2,7 +2,7 @@ angular.module('main.controller', [])
   .controller('mainCtrl', ['$scope', '$location', 'auth', 'store', function($scope, $location, auth, store) {
 
     $scope.auth = auth;
-    
+
     $scope.login = function() {
       auth.signin({}, function(profile, id_token) {
         console.log(id_token);

@@ -11,7 +11,10 @@ module.exports = function(app, express, authenticate, auth0Manager) {
   api.use('/spells', spellRouter);
 
   var listRouter = require('./spell_list')(app, express, authenticate, auth0Manager);
-  api.use('/spell_lists', listRouter)
+  api.use('/spell_lists', listRouter);
+
+  var userRouter = require('./user')(app, express, authenticate, auth0Manager);
+  api.use('/users', userRouter);
 
   return api;
 };
