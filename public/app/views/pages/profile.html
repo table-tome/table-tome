@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="ui two column stackable grid">
-      <div class="item eight wide column">
+      <div class="column">
         <div class="content">
           <h4>Spell Lists</h4>
           <table class="ui compact celled definition table" style="table-layout: fixed; width: 100%" ng-if="user.user_metadata.spell_lists">
@@ -28,17 +28,12 @@
           <div ng-if="!user.user_metadata.spell_lists">This user has no spell lists!</div>
         </div>
       </div>
-      <div class="item eight wide column">
+      <div class="column">
         <div class="content">
-          <table class="ui compact celled definition table" style="table-layout:fixed; width: 100%">
-            <tr>
-              <th style="text-align: center;" colspan="2">Custom Spells</th>
-            </tr>
-            <tr ng-repeat="spell in user.user_metadata.custom_lists">
-              <td>{{ spell.spell }}</td>
-            </tr>
-          </table>
-          {{ user.user_metadata.custom_spells }}
+          <h4>Custom Spells</h4>
+          <div class="ui segment">
+            {{ user.user_metadata.custom_spells }}
+          </div>
         </div>
       </div>
     </div>
