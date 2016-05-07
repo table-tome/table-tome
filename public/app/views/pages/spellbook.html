@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-click="clicked(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
+        <tr ng-click="spellClick(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
           <td>{{ spell.name }}</td>
           <td ng-switch on="spell.level" data-sort-value="{{ spell.level }}">
             <span ng-switch-when="0">cantrip</span>
@@ -37,5 +37,5 @@
 </div>
 <ng-include src="'app/views/includes/modal.spell.html'"></ng-include>
 <script>
-$('table.sortable').tablesort();
+  $('table.sortable').tablesort();
 </script>

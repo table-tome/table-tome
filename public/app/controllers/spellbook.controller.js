@@ -57,15 +57,17 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       }
     };
 
-    $scope.clickedSpell = {};
-    $scope.clicked = function(spell) {
-      console.log(spell);
-      $scope.clickedSpell = spell;
+    $scope.modalSpell = {};
+    $scope.spellClick = function(spell) {
+      $scope.modalSpell = spell;
       $(".ui.modal.spell").modal({
         onVisible: function() {
           $(".ui.modal.spell").modal("refresh");
+        },
+        onHidden: function() {
+          $scope.modalSpell = {};
         }
-      }).modal("show");
+      }).modal("show").modal("hide others");
     };
 
     $scope.spellLists = {

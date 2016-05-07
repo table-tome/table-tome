@@ -10,10 +10,32 @@ module.exports = function(app, express, authenticate) {
     });
   });
 
+  spellRouter.get('/:id', function(req, res) {
+    Spell.findOne({
+      _id: req.params.id
+    }, function(err, spell) {
+      if (err) return res.send(err);
+      res.json(spell);
+    });
+  });
+
+  spellRouter.get('/multiple', function(req, res) {
+    Spell.find({
+      _id: {
+        $in: req.body.id_list
+      }
+    }, function(err, spells) {
+      if (err) return res.send(err);
+      res.json(spells)
+    });
+  });
+
   spellRouter.post('/create', function(req, res) {
     var pass = req.body.pass;
     if (req.body.pass === process.env.CONTRIBUTE_PASS) {
-      Spell.findOne({ name: req.body.spell.name }, function(err, found) {
+      Spell.findOne({
+        name: req.body.spell.name
+      }, function(err, found) {
         if (!found) {
           var spell = new Spell();
           spell.source = req.body.spell.source;

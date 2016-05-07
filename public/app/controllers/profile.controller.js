@@ -1,8 +1,8 @@
 angular.module('profile.controller', [])
-  .controller('profileCtrl', ['$scope', '$routeParams', 'auth', 'User', function($scope, $routeParams, auth, User) {
+  .controller('profileCtrl', ['$scope', '$routeParams', 'auth', 'User', 'Spells', function($scope, $routeParams, auth, User, Spells) {
 
-    $scope.userUrl = $routeParams.username;
-    $scope.fakeUser = {
+    $scope.username = $routeParams.username;
+    $scope.user = {
       nickname: 'No User',
       picture: 'http://www.tribe-war.com/images/user.jpg',
       user_id: 'fakeid123456789',
@@ -22,21 +22,11 @@ angular.module('profile.controller', [])
         about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam commodo metus nec convallis facilisis. Aliquam sit amet convallis lacus. Pellentesque sit amet lacinia leo, sit amet accumsan ex. Sed eleifend ultricies tellus. Proin sit amet ullamcorper nunc. Proin mauris massa, vulputate sed orci vitae, pharetra lacinia sem. Etiam quis ipsum dolor. Suspendisse commodo, purus sit amet rutrum mollis, metus purus fermentum mi, ac consequat ligula ex nec nisl.'
       }
     };
-    // $scope.parseData = function() {
-    //   if ($scope.user == null){
-    //     $scope.user = $scope.fakeUser;
-    //   }
-    // };
-    User.get($scope.userUrl).success(function(data) {
-      $scope.user = data;
-      if ($scope.user == []) {
-        console.log("it was null");
-        $scope.user = $scope.fakeUser;
-        if ($scope.user.user_metadata.spell_lists) console.log("TEST");
-        else console.log("YAY");
-      }
-    });
 
+
+    User.get($scope.username).success(function(data) {
+      $scope.user = data;
+    });
 
 
     $scope.auth = auth;
