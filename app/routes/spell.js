@@ -19,7 +19,7 @@ module.exports = function(app, express, authenticate) {
     });
   });
 
-  spellRouter.get('/multiple', function(req, res) {
+  spellRouter.post('/multiple', function(req, res) {
     Spell.find({
       _id: {
         $in: req.body.id_list

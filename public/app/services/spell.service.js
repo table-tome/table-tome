@@ -11,7 +11,7 @@ angular.module('spell.service', [])
     };
 
     factory.getSpellsByIds = function(id_list) {
-      return $http.get('/api/spells/multiple', {
+      return $http.post('/api/spells/multiple', {
         id_list: id_list
       });
     };

@@ -58,6 +58,7 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
     };
 
     $scope.modalSpell = {};
+    $scope.showSpellModalActions = true;
     $scope.spellClick = function(spell) {
       $scope.modalSpell = spell;
       $(".ui.modal.spell").modal({

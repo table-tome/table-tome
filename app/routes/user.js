@@ -13,7 +13,6 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         else {
           for (i in users) {
             var user = users[i];
-            console.log(user.nickname)
             if (user.nickname && user.nickname.toLowerCase() === username.toLowerCase()) {
               res.send(users[i]);
               return;
