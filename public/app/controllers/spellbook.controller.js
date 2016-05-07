@@ -61,14 +61,14 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
     $scope.showSpellModalActions = true;
     $scope.spellClick = function(spell) {
       $scope.modalSpell = spell;
-      $(".ui.modal.spell").modal({
+      $("#spellbook-spell-modal").modal({
         onVisible: function() {
-          $(".ui.modal.spell").modal("refresh");
+          $("#spellbook-spell-modal").modal("refresh");
         },
         onHidden: function() {
           $scope.modalSpell = {};
         }
-      }).modal("show").modal("hide others");
+      }).modal("show");
     };
 
     $scope.spellLists = {

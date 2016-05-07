@@ -23,5 +23,9 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       });
   });
 
+  userRouter.use('/authenticated', authenticate);
+
+  userRouter.post('/authenticated/update', function(req, res) {});
+
   return userRouter;
 };

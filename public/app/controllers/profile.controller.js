@@ -53,14 +53,14 @@ angular.module('profile.controller', [])
     $scope.showSpellModalActions = false;
     $scope.showSpell = function(id) {
       $scope.modalSpell = $scope.getSpell(id);
-      $(".ui.modal.spell").modal({
+      $("#profile-spell-modal").modal({
         onVisible: function() {
-          $(".ui.modal.spell").modal("refresh");
+          $("#profile-spell-modal").modal("refresh");
         },
         onHidden: function() {
           $scope.modalSpell = {};
         }
-      }).modal("show").modal("hide others");
+      }).modal("show");
     };
 
     $scope.auth = auth;

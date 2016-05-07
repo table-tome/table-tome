@@ -3,3 +3,4 @@ public/bower_components
 public/app/config.js
 npm-debug.log
 .env
+auth0-docs.html
