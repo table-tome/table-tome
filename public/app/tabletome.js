@@ -25,6 +25,13 @@ angular.module('tabletome', [
       extensions: ['table']
     });
 
+    // auth0 login stuff
+    authProvider.init({
+      domain: AUTH0_DOMAIN,
+      clientID: AUTH0_CLIENT_ID,
+      loginUrl: '/login'
+    });
+
     jwtInterceptorProvider.tokenGetter = function(store) {
       return store.get('token');
     }
@@ -35,14 +42,11 @@ angular.module('tabletome', [
     $httpProvider.interceptors.push('jwtInterceptor');
   })
   .run(function($rootScope, auth, store, jwtHelper, $location) {
-    // auth0 login stuff
-    auth.init({
-      domain: AUTH0_DOMAIN,
-      clientID: AUTH0_CLIENT_ID
-    });
     auth.hookEvents();
-    $rootScope.$on('$locationChangeStart', function() {
 
+
+
+    $rootScope.$on('$locationChangeStart', function() {
       var token = store.get('token');
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {

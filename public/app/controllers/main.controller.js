@@ -8,6 +8,7 @@ angular.module('main.controller', [])
         console.log(id_token);
         store.set('profile', profile);
         store.set('token', id_token);
+        $location.url('/');
       }, function() {
         // TODO handle when login fails
       })
