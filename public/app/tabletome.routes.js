@@ -21,6 +21,7 @@ angular.module('tabletome.routes', ['ngRoute'])
       })
       .when('/settings', {
         templateUrl: 'app/views/pages/settings.html',
+        controller: 'settingsCtrl',
         requiresLogin: true
       })
       .otherwise({

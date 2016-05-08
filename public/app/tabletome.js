@@ -5,6 +5,7 @@ angular.module('tabletome', [
     'spellbook.controller',
     'contribute.controller',
     'profile.controller',
+    'settings.controller',
     // services
     'spell.service',
     'list.service',

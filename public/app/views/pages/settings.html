@@ -1,3 +1,56 @@
 <div class="ui container">
-  Settings Page TODO. This is the page where a user will edit their settings. Profile settings first because those are the only ones that exist.
+  <div class="ui vertically divided stackable grid">
+    <div class="row">
+      <div class="five wide column">
+        <div class="ui fluid card">
+          <div class="image">
+            <img class="ui medium rounded image" ng-src="{{ auth.profile.picture }}">
+          </div>
+          <div class="content">
+            <div class="header">Profile Image</div>
+            <div class="description">
+              We use <a href="https://en.gravatar.com/" target="_blank">Gravatar</a> for your profile image! If you want to edit it, head over to <a href="https://en.gravatar.com/" target="_blank">Gravatar</a> now!
+            </div>
+          </div>
+          <a class="ui bottom attached orange button" href="https://en.gravatar.com/" target="_blank">
+            <i class="photo icon"></i> Visit Gravatar
+          </a>
+        </div>
+      </div>
+      <div class="eleven wide column">
+        <form class="ui form" ng-submit="changeUsername()">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" name="first-name" placeholder="{{ auth.profile.nickname }}" ng-model="username">
+          </div>
+          <button class="ui button" type="submit">Change Username</button>
+        </form>
+        <div class="ui divider"></div>
+        <form class="ui form" ng-submit="changeAboutMe()">
+          <div class="field">
+            <label>About Me</label>
+            <textarea ng-model="about_me">{{ auth.profile.user_metadata.about_me }}</textarea>
+          </div>
+          <button class="ui button" type="submit">Edit About Me</button>
+        </form>
+        <div class="ui divider"></div>
+        <div class="ui red button" ng-click="resetPassword()">Reset Password</div>
+      </div>
+    </div>
+    <div class="row" id="custom-spells">
+      <div class="column">
+        <div class="ui styled fluid accordion">
+          <div class="title">
+            <i class="dropdown icon"></i> Custom Spells
+          </div>
+          <div class="content">
+            <p>When custom spells come, editing them will happen here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<script>
+  $('.ui.accordion').accordion();
+</script>
