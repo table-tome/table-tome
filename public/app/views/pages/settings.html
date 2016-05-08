@@ -24,7 +24,8 @@
           <div class="field">
             <label>About Me</label>
             <p><small><strong>Current About Me:</strong></small> {{ auth.profile.user_metadata.about_me }}</p>
-            <textarea max-length="1000" required ng-model="about_me" placeholder="Tell everyone a little about yourself! Are you a DM? An adventurer?"></textarea>
+            <textarea maxlength="{{ max_length }}" required ng-model="about_me" placeholder="Tell everyone a little about yourself! Are you a DM? An adventurer?"></textarea>
+            <p><small>{{ max_length - about_me.length }} characters left.</small></p>
           </div>
           <button class="ui button" type="submit"><i class="write icon"></i> Submit About Me Changes</button>
         </form>

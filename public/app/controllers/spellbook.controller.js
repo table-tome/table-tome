@@ -1,7 +1,7 @@
 angular.module('spellbook.controller', ['spell.service', 'list.service'])
-  .controller('spellbookCtrl', ['$scope', 'Spells', 'SpellLists', function($scope, Spells, SpellLists) {
+  .controller('spellbookCtrl', ['$scope', '$window', 'Spells', 'SpellLists', function($scope, $window, Spells, SpellLists) {
 
-    $scope.spells = [];
+    $scope.spells = 'loading';
     $scope.getSpells = function() {
       Spells.get().success(function(data) {
         $scope.spells = data;
@@ -121,7 +121,8 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       }
     };
 
-    $scope.getSpells();
-    $scope.spellLists.update();
-
+    $window.onload = function() {
+      $scope.getSpells();
+      $scope.spellLists.update();
+    };
   }]);

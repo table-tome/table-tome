@@ -18,7 +18,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-click="spellClick(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
+        <tr ng-if="spells === 'loading'">
+          <td colspan="4">
+            <div class="ui active centered inline text loader">Loading Spells</div>
+          </td>
+        </tr>
+        <tr ng-if="spells !== 'loading'" ng-click="spellClick(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
           <td>{{ spell.name }}</td>
           <td ng-switch on="spell.level" data-sort-value="{{ spell.level }}">
             <span ng-switch-when="0">cantrip</span>
