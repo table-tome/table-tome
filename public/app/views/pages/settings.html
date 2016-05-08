@@ -24,7 +24,7 @@
           <div class="field">
             <label>About Me</label>
             <p><small><strong>Current About Me:</strong></small> {{ auth.profile.user_metadata.about_me }}</p>
-            <textarea ng-model="about_me" placeholder="Tell everyone a little about yourself! Are you a DM? An adventurer?"></textarea>
+            <textarea max-length="1000" required ng-model="about_me" placeholder="Tell everyone a little about yourself! Are you a DM? An adventurer?"></textarea>
           </div>
           <button class="ui button" type="submit"><i class="write icon"></i> Submit About Me Changes</button>
         </form>
@@ -32,7 +32,7 @@
         <div class="ui red button" ng-click="resetPassword()">Reset Password</div>
       </div>
     </div>
-    <div class="row" id="custom-spells">
+    <!-- <div class="row" id="custom-spells">
       <div class="column">
         <div class="ui styled fluid accordion">
           <div class="title">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <script>
