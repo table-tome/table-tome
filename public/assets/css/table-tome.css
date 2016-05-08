@@ -107,11 +107,20 @@ th.nohand:hover {
     border-radius: 50% !important;
 }
 .pro-item{
-  
+
 }
 .customError {
   display: block;
   box-shadow: 0 0 0 1px #e0b4b4 inset, 0 0 0 0 transparent !important;
   background-color: #fff6f6 !important;
   color: #9f3a38 !important;
+}
+
+.fade.ng-enter {
+  transition:1s linear all;
+  opacity:0;
+}
+
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
 }

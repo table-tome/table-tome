@@ -19,6 +19,8 @@ angular.module('tabletome', [
     'auth0',
     'angular-storage',
     'angular-jwt',
+    // animate
+    'ngAnimate'
   ])
   .config(function(markdownConverterProvider, authProvider, $routeProvider, $httpProvider, jwtInterceptorProvider) {
     // enable tables for spell description displays

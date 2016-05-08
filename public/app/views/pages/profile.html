@@ -1,2 +1,2 @@
-<ng-include src="'app/views/includes/profile/user.found.html'" ng-if="user !== ''"></ng-include>
-<ng-include src="'app/views/includes/profile/user.none.html'" ng-if="user === ''"></ng-include>
+<ng-include src="'app/views/includes/profile/user.found.html'" ng-if="user !== '' && user !== 'loading'" class="fade"></ng-include>
+<ng-include src="'app/views/includes/profile/user.none.html'" ng-if="user === ''" class="fade"></ng-include>
