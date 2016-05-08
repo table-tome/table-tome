@@ -1,44 +1,47 @@
 <div class="ui container">
-  <div class="ui relaxed divided items">
-    <div class="item">
-      <div class="ui medium image">
-        <img class="img-circle" ng-src="{{user.picture}}" />
-      </div>
-      <div class="content">
-        <a class="header">{{ user.nickname }}</a>
-        <div class="description">{{ user.user_metadata.about }}</div>
-      </div>
-    </div>
-    <div class="ui two column stackable grid">
-      <div class="column">
-        <div class="content">
-          <h4>Spell Lists</h4>
-          <table class="ui celled table" ng-if="user.user_metadata.spell_lists">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Spells</th>
-                <tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="spell_list in user.user_metadata.spell_lists">
-                <td>{{ spell_list.name }}</td>
-                <td class="ui list">
-                  <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
-                  <a class="item" ng-repeat="spell_id in spell_list.list" ng-click="showSpell(spell_id)">{{ getSpell(spell_id).name }}</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div ng-if="!user.user_metadata.spell_lists">This user has no spell lists!</div>
+  <h1>{{ user.nickname }}</h1>
+  <div class="ui vertically divided stackable grid">
+    <div class="row">
+      <div class="five wide column">
+        <div class="ui fluid card">
+          <div class="image">
+            <img class="ui medium rounded image" ng-src="{{ user.picture }}">
+          </div>
+          <div class="content" ng-if="user.user_metadata.about_me">
+            <div class="header">About Me</div>
+            <div class="description">
+              {{ user.user_metadata.about_me }}
+            </div>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="content">
-          <h4>Custom Spells</h4>
-          <div class="ui segment">
-            {{ user.user_metadata.custom_spells }}
-          </div>
+      <div class="eleven wide column">
+        <h4>Spell Lists</h4>
+        <table class="ui celled table" ng-if="user.user_metadata.spell_lists">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Spells</th>
+              <tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="spell_list in user.user_metadata.spell_lists">
+              <td>{{ spell_list.name }}</td>
+              <td class="ui list">
+                <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
+                <a class="item" ng-repeat="spell_id in spell_list.list" ng-click="showSpell(spell_id)">{{ getSpell(spell_id).name }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div ng-if="!user.user_metadata.spell_lists">This user has no spell lists!</div>
+        <div class="ui divider"></div>
+        <h4>Custom Spells</h4>
+        <div class="ui segment" ng-if="user.user_metadata.custom_spells">
+          {{ user.user_metadata.custom_spells }}
+        </div>
+        <div class="ui segment" ng-if="!user.usre_metadata.custom_spells">
+          This user has no custom spells!
         </div>
       </div>
     </div>
