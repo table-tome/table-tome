@@ -27,7 +27,7 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       res.send("A name for the new spell list must be provided");
       return;
     }
-    // get the current user in order to update the metadata without
+    // get the current user in order to update the spell lists without
     //  overwriting their lists
     auth0Manager.getUser({
       id: user_id

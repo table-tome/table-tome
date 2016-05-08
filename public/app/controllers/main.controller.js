@@ -7,7 +7,7 @@ angular.module('main.controller', [])
       auth.signin({}, function(profile, id_token) {
         store.set('profile', profile);
         store.set('token', id_token);
-        $location.url('/');
+        $location.url('/settings');
       }, function() {
         // TODO handle when login fails
       })

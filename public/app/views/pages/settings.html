@@ -1,4 +1,6 @@
 <div class="ui container">
+  <h1 class="ui center aligned header">{{ auth.profile.nickname }}</h1>
+  <div class="ui divider"></div>
   <div class="ui vertically divided stackable grid">
     <div class="row">
       <div class="five wide column">
@@ -18,20 +20,13 @@
         </div>
       </div>
       <div class="eleven wide column">
-        <form class="ui form" ng-submit="changeUsername()">
-          <div class="field">
-            <label>Username</label>
-            <input type="text" name="first-name" placeholder="{{ auth.profile.nickname }}" ng-model="username">
-          </div>
-          <button class="ui button" type="submit">Change Username</button>
-        </form>
-        <div class="ui divider"></div>
         <form class="ui form" ng-submit="changeAboutMe()">
           <div class="field">
             <label>About Me</label>
-            <textarea ng-model="about_me">{{ auth.profile.user_metadata.about_me }}</textarea>
+            <p><small><strong>Current About Me:</strong></small> {{ auth.profile.user_metadata.about_me }}</p>
+            <textarea ng-model="about_me" placeholder="Tell everyone a little about yourself! Are you a DM? An adventurer?"></textarea>
           </div>
-          <button class="ui button" type="submit">Edit About Me</button>
+          <button class="ui button" type="submit"><i class="write icon"></i> Submit About Me Changes</button>
         </form>
         <div class="ui divider"></div>
         <div class="ui red button" ng-click="resetPassword()">Reset Password</div>

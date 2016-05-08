@@ -1,5 +1,6 @@
 <div class="ui container">
-  <h1>{{ user.nickname }}</h1>
+  <h1 class="ui center aligned header">{{ user.nickname }}</h1>
+  <div class="ui divider"></div>
   <div class="ui vertically divided stackable grid">
     <div class="row">
       <div class="five wide column">
@@ -8,7 +9,7 @@
             <img class="ui medium rounded image" ng-src="{{ user.picture }}">
           </div>
           <div class="content" ng-if="user.user_metadata.about_me">
-            <div class="header">About Me</div>
+            <div class="header"><i class="info circle icon"></i> About Me</div>
             <div class="description">
               {{ user.user_metadata.about_me }}
             </div>
@@ -27,9 +28,11 @@
           <tbody>
             <tr ng-repeat="spell_list in user.user_metadata.spell_lists">
               <td>{{ spell_list.name }}</td>
-              <td class="ui list">
-                <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
-                <a class="item" ng-repeat="spell_id in spell_list.list" ng-click="showSpell(spell_id)">{{ getSpell(spell_id).name }}</a>
+              <td>
+                <div class="ui list">
+                  <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
+                  <a class="item" ng-repeat="spell_id in spell_list.list" ng-click="showSpell(spell_id)">{{ getSpell(spell_id).name }}</a>
+                </div>
               </td>
             </tr>
           </tbody>

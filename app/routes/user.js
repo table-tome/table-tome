@@ -23,9 +23,25 @@ module.exports = function(app, express, authenticate, auth0Manager) {
       });
   });
 
-  userRouter.use('/authenticated', authenticate);
+  userRouter.use('/edit', authenticate);
 
-  userRouter.post('/authenticated/update', function(req, res) {});
+  userRouter.post('/edit/about_me', function(req, res) {
+    var about_me = null;
+    if (req.body.about_me) about_me = req.body.about_me;
+
+    var metadata = {
+      about_me: about_me
+    };
+
+    auth0Manager.updateUserMetadata({
+      id: req.user.sub
+    }, metadata, function(err, user) {
+      if (err) res.send(err);
+      else {
+        res.send(user);
+      }
+    });
+  });
 
   return userRouter;
 };
