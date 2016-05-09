@@ -105,9 +105,6 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
           $('#spell-list-edit-accordion')
             .accordion();
         },
-        submit: function() {
-          //figure out how to update a specific spell list (if not async update)
-        },
         remove_list: function(list_) {
           SpellLists.deleteList(list_).success(function(data) {
             $scope.spellLists.lists = data;
@@ -115,7 +112,6 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
         },
         remove_spell: function(list_, spell_) {
           console.log("Removing " + list_ + " " + spell_);
-          //figure out how to remove a spell from a list
           SpellLists.removeSpell(list_, spell_).success(function(data) {
             $scope.spellLists.lists = data;
           });
@@ -123,8 +119,6 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
         cancel: function() {
           $("#spell-list-edit-modal").modal("hide");
           $scope.spellLists.edit.reset();
-        },
-        reset: function() {
         }
       },
       create: {
