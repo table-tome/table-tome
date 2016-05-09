@@ -6,7 +6,7 @@
   <div class="field item">
     <div class="header">Current List</div>
     <select id="spell-list-dropdown" class="ui fluid dropdown" ng-model="spellLists.selected" ng-change="listChanged()">
-      <option value="all">All Spells</option>
+      <option value="all">ALL SPELLS</option>
       <option value="{{ $index }}" ng-repeat="list in spellLists.lists">{{ list.name }}</option>
     </select>
   </div>

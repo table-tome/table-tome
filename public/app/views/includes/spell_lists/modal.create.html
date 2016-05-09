@@ -1,4 +1,5 @@
 <form id="spell-list-create-modal" class="ui basic small modal" ng-submit="spellLists.create.submit()">
+  <i class="close icon"></i>
   <div class="header">
     Create a New Spell List.
   </div>
@@ -7,11 +8,12 @@
       <i class="list icon"></i>
     </div>
     <div class="description">
-      <p>You have <strong>5</strong> out of your <strong>5</strong> available spell list slots left. This will be your <strong>first</strong> spell list.</p>
+      <p>You have <strong>{{ 5 - spellLists.lists.length }}</strong> out of your <strong>5</strong> available spell list slots left. <span ng-if="spellLists.lists.length >= 5">If you would like to create another spell list, please delete one of your existing lists.</span>
+      </p>
       <div class="ui inverted form">
         <div class="field">
           <label>Name</label>
-          <input class="fluid" placeholder="Spell List Name" type="text" ng-model="spellLists.create.name" required>
+          <input class="fluid" placeholder="Spell List Name" type="text" ng-model="spellLists.create.name" required ng-disabled="spellLists.lists.length >= 5">
         </div>
       </div>
     </div>
@@ -20,7 +22,7 @@
     <button class="ui red basic inverted button" type="button" ng-click="spellLists.create.cancel()">
       <i class="remove icon"></i> Cancel
     </button>
-    <button class="ui green basic inverted button" type="submit">
+    <button class="ui green basic inverted button" type="submit" ng-disabled="spellLists.lists.length >= 5">
       <i class="checkmark icon"></i> Create
     </button>
   </div>
