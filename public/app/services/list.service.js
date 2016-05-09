@@ -3,13 +3,10 @@ angular.module('list.service', [])
     var factory = {};
 
     factory.get = function() {
-      var lists = $http.get('/api/spell_lists');
-      console.log(lists);
-      return lists;
+      return $http.get('/api/spell_lists');
     };
 
     factory.create = function(name) {
-      console.log(name);
       return $http.post('/api/spell_lists', {
         list_name: name
       });
@@ -19,7 +16,15 @@ angular.module('list.service', [])
       return $http.post('/api/spell_lists/' + name, {
         spell_id: id
       });
-    }
+    };
+
+    factory.deleteList = function(name) {
+      return $http.delete('/api/spell_lists/' + name);
+    };
+
+    factory.removeSpell = function(name, id) {
+      return $http.delete('/api/spell_lists/' + name + '/' + id);
+    };
 
     return factory;
   }]);

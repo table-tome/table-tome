@@ -75,7 +75,6 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     });
   });
 
-
   // route to add a spell id to an existing list
   listRouter.post('/:list', function(req, res) {
     var user_id = req.user.sub;
@@ -115,7 +114,6 @@ module.exports = function(app, express, authenticate, auth0Manager) {
             }, metadata, function(err, user) {
               if (err) res.send(err);
               else {
-                console.log(user.user_metadata.spell_lists);
                 res.send(user.user_metadata.spell_lists);
               }
             });
@@ -124,6 +122,80 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         if (!found) {
           res.send("User does not have a list named " + list_name);
         }
+      }
+    });
+  });
+
+  // deletes the specified list
+  listRouter.delete('/:list', function(req, res) {
+    auth0Manager.getUser({
+      id: req.user.sub
+    }, function(err, user) {
+      if (err) res.send(err);
+      else {
+        var lists = null;
+        if (user.user_metadata && user.user_metadata.spell_lists)
+          lists = user.user_metadata.spell_lists;
+
+        // delete the specified list
+        var list_name = req.params.list;
+        for (i in lists) {
+          if (list_name === lists[i].name) {
+            lists.splice(i, 1);
+            break;
+          }
+        }
+
+        // update the spell lists
+        var metadata = {
+          spell_lists: lists
+        };
+        auth0Manager.updateUserMetadata({
+          id: req.user.sub
+        }, metadata, function(err, user) {
+          if (err) res.send(err);
+          else res.send(user.user_metadata.spell_lists);
+        });
+      }
+    });
+  });
+
+  // deletes the specified spell from the specified list
+  listRouter.delete('/:list/:spell', function(req, res) {
+    auth0Manager.getUser({
+      id: req.user.sub
+    }, function(err, user) {
+      if (err) res.send(err);
+      else {
+        var lists = null;
+        if (user.user_metadata && user.user_metadata.spell_lists)
+          lists = user.user_metadata.spell_lists;
+
+        // find the correct list and spell within that list, and remove it
+        var list_name = req.params.list;
+        for (i in lists) {
+          if (list_name === lists[i].name) {
+            var spell = req.params.spell;
+            for (j in lists[i].list) {
+              if (spell === lists[i].list[j]) {
+                lists[i].list.splice(j, 1);
+                break;
+              }
+            }
+            break;
+          }
+        }
+
+        // update the spell lists
+        var metadata = {
+          spell_lists: lists
+        };
+        auth0Manager.updateUserMetadata({
+          id: req.user.sub
+        }, metadata, function(err, user) {
+          if (err) res.send(err);
+          else res.send(user.user_metadata.spell_lists);
+        });
       }
     });
   });
