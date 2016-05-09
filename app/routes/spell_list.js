@@ -1,5 +1,6 @@
 module.exports = function(app, express, authenticate, auth0Manager) {
   var listRouter = express.Router();
+  var num_max_lists = 5;
 
   listRouter.use('/', authenticate);
 
@@ -11,10 +12,17 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     auth0Manager.getUser({
       id: user_id
     }, function(err, user) {
-      if (err) res.send(err);
-      else {
+      if (err) {
+        res.send({
+          success: false,
+          message: err
+        });
+      } else {
         // return only the user's spell lists
-        res.send(user.user_metadata.spell_lists || {});
+        res.send({
+          success: true,
+          lists: user.user_metadata.spell_lists || {}
+        });
       }
     });
   });
@@ -24,7 +32,10 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     var user_id = req.user.sub;
     // make sure the new list name isn't undefined
     if (!req.body.list_name) {
-      res.send("A name for the new spell list must be provided");
+      res.send({
+        success: false,
+        message: "A name for the new spell list must be provided"
+      });
       return;
     }
     // get the current user in order to update the spell lists without
@@ -32,23 +43,42 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     auth0Manager.getUser({
       id: user_id
     }, function(err, user) {
-      if (err) res.send(err);
-      else {
+      if (err) {
+        res.send({
+          success: false,
+          message: err
+        });
+      } else {
         var lists = [];
         if (user.user_metadata && user.user_metadata.spell_lists) {
           lists = user.user_metadata.spell_lists;
         }
 
+        // make sure the user doesn't have too many lists already
+        if (lists.length >= num_max_lists) {
+          res.send({
+            success: false,
+            message: "You cannot create more than " + num_max_lists + " lists."
+          });
+          return;
+        }
+
         // make sure the list isn't called "All Lists"
         if (req.body.list_name === "All Lists") {
-          res.send("A spell list cannot be named " + $req.body.list_name);
+          res.send({
+            success: false,
+            message: "A spell list cannot be named " + $req.body.list_name
+          });
           return;
         }
 
         // make sure that no other list has the same name
         for (i in lists) {
           if (lists[i].name === req.body.list_name) {
-            res.send("A spell list named \"" + req.body.list_name + "\" already exists");
+            res.send({
+              success: false,
+              message: "A spell list named \"" + req.body.list_name + "\" already exists"
+            });
             return;
           }
         }
@@ -65,10 +95,17 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         auth0Manager.updateUserMetadata({
           id: user_id
         }, metadata, function(err, user) {
-          if (err) res.send(err);
-          else {
+          if (err) {
+            res.send({
+              success: false,
+              message: err
+            });
+          } else {
             // return the user's updated spell lists
-            res.send(user.user_metadata.spell_lists || []);
+            res.send({
+              success: true,
+              lists: user.user_metadata.spell_lists || []
+            });
           }
         });
       }
@@ -82,21 +119,31 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     var spell_id = req.body.spell_id;
 
     if (!spell_id) {
-      res.send("No spell id was sent in the body");
+      res.send({
+        success: false,
+        message: "No spell id was sent in the body"
+      });
       return;
     }
 
     auth0Manager.getUser({
       id: user_id
     }, function(err, user) {
-      if (err) res.send(err);
-      else {
+      if (err) {
+        res.send({
+          success: false,
+          message: err
+        });
+      } else {
         var lists = null;
         if (user.user_metadata && user.user_metadata.spell_lists)
           lists = user.user_metadata.spell_lists;
 
         if (lists === null) {
-          res.send("User has no lists to append to");
+          res.send({
+            success: false,
+            message: "User does not have a list named " + list_name
+          });
           return;
         }
 
@@ -105,6 +152,18 @@ module.exports = function(app, express, authenticate, auth0Manager) {
           if (lists[i].name === list_name) {
             found = true;
 
+            // if the spell is already in the list, return the original list
+            //  should maybe be treated with an error
+            for (j in lists[i].list) {
+              if (spell_id === lists[i].list[j]) {
+                res.send({
+                  success: true,
+                  lists: lists
+                });
+                return;
+              }
+            }
+
             lists[i].list.push(spell_id);
             var metadata = {
               spell_lists: lists
@@ -112,15 +171,24 @@ module.exports = function(app, express, authenticate, auth0Manager) {
             auth0Manager.updateUserMetadata({
               id: user_id
             }, metadata, function(err, user) {
-              if (err) res.send(err);
+              if (err) res.send({
+                success: false,
+                message: err
+              });
               else {
-                res.send(user.user_metadata.spell_lists);
+                res.send({
+                  success: true,
+                  lists: user.user_metadata.spell_lists
+                });
               }
             });
           }
         }
         if (!found) {
-          res.send("User does not have a list named " + list_name);
+          res.send({
+            success: false,
+            message: "User does not have a list named " + list_name
+          });
         }
       }
     });
@@ -131,7 +199,10 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     auth0Manager.getUser({
       id: req.user.sub
     }, function(err, user) {
-      if (err) res.send(err);
+      if (err) res.send({
+        success: false,
+        message: err
+      });
       else {
         var lists = null;
         if (user.user_metadata && user.user_metadata.spell_lists)
@@ -153,8 +224,15 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         auth0Manager.updateUserMetadata({
           id: req.user.sub
         }, metadata, function(err, user) {
-          if (err) res.send(err);
-          else res.send(user.user_metadata.spell_lists);
+          if (err) {
+            res.send({
+              success: false,
+              message: err
+            });
+          } else res.send({
+            success: true,
+            lists: user.user_metadata.spell_lists
+          });
         });
       }
     });
@@ -165,8 +243,12 @@ module.exports = function(app, express, authenticate, auth0Manager) {
     auth0Manager.getUser({
       id: req.user.sub
     }, function(err, user) {
-      if (err) res.send(err);
-      else {
+      if (err) {
+        res.send({
+          success: false,
+          message: err
+        });
+      } else {
         var lists = null;
         if (user.user_metadata && user.user_metadata.spell_lists)
           lists = user.user_metadata.spell_lists;
@@ -193,8 +275,14 @@ module.exports = function(app, express, authenticate, auth0Manager) {
         auth0Manager.updateUserMetadata({
           id: req.user.sub
         }, metadata, function(err, user) {
-          if (err) res.send(err);
-          else res.send(user.user_metadata.spell_lists);
+          if (err) res.send({
+            success: false,
+            message: err
+          });
+          else res.send({
+            success: true,
+            lists: user.user_metadata.spell_lists
+          });
         });
       }
     });

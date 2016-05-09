@@ -4,8 +4,8 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
     $scope.spells = 'loading';
     $scope.getSpells = function() {
       console.log('retrieving spells');
-      Spells.get().success(function(data) {
-        $scope.spells = data;
+      Spells.get().then(function(res) {
+        $scope.spells = res.data;
       });
     };
     //pulled over from profile.controller to get a specific spell for edit_list
@@ -87,11 +87,16 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
           _.indexOf($scope.spellLists.lists[$scope.spellLists.selected].list, spell._id) > -1) {
           return spell;
         }
-
       },
       update: function() {
-        SpellLists.get().success(function(data) {
-          $scope.spellLists.lists = data;
+        SpellLists.get().then(function(res) {
+          var data = res.data;
+          if (data.success) {
+            $scope.spellLists.lists = data.lists;
+          } else {
+            // TODO?
+            console.log(data.message);
+          }
         });
       },
       edit: {
@@ -105,19 +110,32 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
             .accordion();
         },
         remove_list: function(list_) {
-          SpellLists.deleteList(list_).success(function(data) {
-            $scope.spellLists.lists = data;
-          })
+          SpellLists.deleteList(list_).then(function(res) {
+            var data = res.data;
+            if (data.success) {
+              $scope.spellLists.lists = data.lists;
+              $("#spell-list-edit-modal").modal("hide");
+              $scope.spellLists.selected = "all";
+            } else {
+              // TODO
+              console.log(data.message);
+            }
+          });
         },
         remove_spell: function(list_, spell_) {
           console.log("Removing " + list_ + " " + spell_);
-          SpellLists.removeSpell(list_, spell_).success(function(data) {
-            $scope.spellLists.lists = data;
+          SpellLists.removeSpell(list_, spell_).then(function(res) {
+            var data = res.data;
+            if (data.success) {
+              $scope.spellLists.lists = data.lists;
+            } else {
+              // TODO
+              console.log(data.message);
+            }
           });
         },
         cancel: function() {
           $("#spell-list-edit-modal").modal("hide");
-          $scope.spellLists.edit.reset();
         }
       },
       create: {
@@ -131,12 +149,17 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
         },
         submit: function() {
           console.log("Creating spell lists named " + $scope.spellLists.create.name);
-          SpellLists.create($scope.spellLists.create.name).success(function(data) {
-            $scope.spellLists.lists = data;
-            console.log($scope.spellLists);
-            $scope.spellLists.create.reset();
+          SpellLists.create($scope.spellLists.create.name).then(function(res) {
+            var data = res.data;
+            if (data.success) {
+              $scope.spellLists.lists = data.lists;
+              $scope.spellLists.create.reset();
+              $("#spell-list-create-modal").modal("hide");
+            } else {
+              // TODO
+              console.log(data.message);
+            }
           });
-          $("#spell-list-create-modal").modal("hide");
         },
         cancel: function() {
           $("#spell-list-create-modal").modal("hide");
@@ -148,8 +171,13 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       },
       append: function(list, id) {
         console.log(list + ": " + id);
-        SpellLists.append(list, id).success(function(data) {
-          $scope.spellLists.lists = data;
+        SpellLists.append(list, id).then(function(res) {
+          var data = res.data;
+          if (data.success) {
+            $scope.spellLists.lists = data.lists;
+          } else {
+            console.log(data.message)
+          }
         });
       }
     };
