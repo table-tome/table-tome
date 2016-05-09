@@ -23,10 +23,11 @@
                   {{ getSpell(spell_id).name }}
                 </div>
                 <div class="right floated content">
-                  <a class="ui button" ng-click="remove_spell(spell_list, spell_id)"><i class="remove icon "/></a>
+                  <button class="ui red button" ng-click="spellLists.edit.remove_spell(spell_list.name, spell_id)">Remove from List</button>
                 </div>
               </div>
             </div>
+            <button class="ui red button" ng-click="spellLists.edit.remove_list(spell_list.name)">Delete List</button>
           </div>
         </div>
       </div>
@@ -64,10 +65,7 @@
  -->
       <div class="actions">
         <button class="ui red basic button" type="button" ng-click="spellLists.edit.cancel()">
-          <i class="remove icon"></i> Cancel
-        </button>
-        <button class="ui green basic button" type="submit">
-          <i class="checkmark icon"></i> Create
+          <i class="remove icon"></i> Close
         </button>
       </div>
     </div>
