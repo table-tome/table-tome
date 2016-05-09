@@ -1,10 +1,7 @@
 <div id="spellbookfilters" class="ui fluid vertical menu">
   <div class="ui large header item">Spell Lists</div>
   <div class="field item">
-    <div class="ui fluid vertical labeled icon buttons">
-      <button class="ui fluid green button" ng-click="spellLists.create.show()"><i class="plus icon"></i> Create List</button>
-      <button class="ui fluid teal button" ng-click="spellLists.edit.show()"><i class="write icon"></i>Edit Lists</button>
-    </div>
+    <button class="ui fluid green button" ng-click="spellLists.create.show()"><i class="plus icon"></i> Create List</button>
   </div>
   <div class="field item">
     <div class="header">Current List</div>
@@ -12,6 +9,9 @@
       <option value="all">All Spells</option>
       <option value="{{ $index }}" ng-repeat="list in spellLists.lists">{{ list.name }}</option>
     </select>
+  </div>
+  <div class="field item">
+    <button class="ui fluid teal button" ng-click="spellLists.edit.show()" ng-disabled="spellLists.selected === 'all'"><i class="write icon"></i>Edit Current List</button>
   </div>
 </div>
 <ng-include src="'app/views/includes/spell_lists/modal.create.html'"></ng-include>

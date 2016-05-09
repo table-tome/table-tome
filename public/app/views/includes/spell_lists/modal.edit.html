@@ -1,35 +1,27 @@
-<!-- BEGIN import table css for markdown tables -->
-<link rel="stylesheet" href="assets/css/table.css" />
-<!-- END import table css -->
-<form id="spell-list-edit-modal" class="ui long modal" ng-submit="spellLists.edit.submit()">
-  <div class="long modal">
-    <div class="content">
-      <div class="ui styled fluid accordion" id="spell-list-edit-accordion">
-        <div ng-repeat="spell_list in spellLists.lists">
-          <div class="title">
-            <i class="dropdown icon"></i> {{ spell_list.name }}
-          </div>
-          <div class="content">
-            <div class="ui middle aligned divided list">
-              <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
-              <div class="item" ng-repeat="spell_id in spell_list.list">
-                <div class="left floated content">
-                  {{ getSpell(spell_id).name }}
-                </div>
-                <div class="right floated content">
-                  <button class="ui red button" ng-click="spellLists.edit.remove_spell(spell_list.name, spell_id)">Remove from List</button>
-                </div>
-              </div>
-            </div>
-            <button class="ui red button" ng-click="spellLists.edit.remove_list(spell_list.name)">Delete List</button>
-          </div>
+<div id="spell-list-edit-modal" class="ui small modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <i class="list icon"></i> Edit "{{ spellLists.lists[spellLists.selected].name }}" List
+  </div>
+  <div class="content">
+    <div ng-if="spellLists.lists[spellLists.selected].list.length === 0">
+      This spell list has no spells in it. Add some!
+    </div>
+    <div class="ui middle aligned divided list">
+      <div class="item" ng-repeat="spell_id in spellLists.lists[spellLists.selected].list">
+        <div class="content">
+          <button class="ui basic mini circular red icon button" ng-click="spellLists.edit.remove_spell(spellLists.lists[spellLists.selected].name, spell_id)">
+            <i class="close icon"></i>
+          </button>
+          &emsp;{{ getSpell(spell_id).name }}
         </div>
       </div>
-      <div class="actions">
-        <button class="ui red basic button" type="button" ng-click="spellLists.edit.cancel()">
-          <i class="remove icon"></i> Close
-        </button>
-      </div>
     </div>
+
   </div>
-</form>
+  <div class="actions">
+    <button class="ui red button" ng-click="spellLists.edit.remove_list(spellLists.lists[spellLists.selected].name)">
+      <i class="trash icon"></i> Delete List
+    </button>
+  </div>
+</div>

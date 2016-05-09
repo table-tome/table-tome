@@ -92,7 +92,6 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       update: function() {
         SpellLists.get().success(function(data) {
           $scope.spellLists.lists = data;
-          console.log($scope.spellLists.lists);
         });
       },
       edit: {
