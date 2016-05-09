@@ -8,6 +8,12 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
         $scope.spells = data;
       });
     };
+    //pulled over from profile.controller to get a specific spell for edit_list
+    $scope.getSpell = function(id) {
+      return _.select($scope.spells, function(spell) {
+        return spell._id === id;
+      })[0];
+    };
 
     $scope.filters = {
       search: "",
@@ -86,7 +92,39 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
       update: function() {
         SpellLists.get().success(function(data) {
           $scope.spellLists.lists = data;
+          console.log($scope.spellLists.lists);
         });
+      },
+      edit: {
+        selected: null,
+        current_spells: null,
+        show: function() {
+          $("#spell-list-edit-modal")
+            .modal({
+              closable: false
+            })
+            .modal("show");
+          $('#spell-list-edit-accordion')
+            .accordion();
+        },
+        submit: function() {
+          //figure out how to update a specific spell list (if not async update)
+        },
+        remove_spell: function(spell_) {
+          console.log("Removing " + $scope.edit.selected + " " + spell_);
+          //figure out how to remove a spell from a list
+          SpellLists.removeSpell(list_, spell_).success(function(data) {
+            $scope.spellLists.lists = data;
+          });
+        },
+        cancel: function() {
+          $("#spell-list-edit-modal").modal("hide");
+          $scope.spellLists.edit.reset();
+        },
+        reset: function() {
+          $scope.spellLists.edit.selected = null;
+          $scope.spellLists.edit.current_spells = null;
+        }
       },
       create: {
         name: null,

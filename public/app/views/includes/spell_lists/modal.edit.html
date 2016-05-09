@@ -1,0 +1,75 @@
+<!-- BEGIN import table css for markdown tables -->
+<link rel="stylesheet" href="assets/css/table.css" />
+<!-- END import table css -->
+<form id="spell-list-edit-modal" class="ui long modal" ng-submit="spellLists.edit.submit()">
+  <div class="long modal">
+    <!-- <div class="field item">
+      <div class="header">Edit Lists</div>
+      <select class="ui fluid dropdown" ng-model="spellLists.edit.selected" ng-change="listChanged()">
+        <option value="{{ $index }}" ng-repeat="list in spellLists.lists">{{ list.name }}</option>
+      </select>
+    </div> -->
+    <div class="content">
+      <div class="ui styled fluid accordion" id="spell-list-edit-accordion">
+        <div ng-repeat="spell_list in spellLists.lists">
+          <div class="title">
+            <i class="dropdown icon"></i> {{ spell_list.name }}
+          </div>
+          <div class="content">
+            <div class="ui middle aligned divided list">
+              <div class="item" ng-if="spell_list.list.length === 0">There are no spells in this spell list</div>
+              <div class="item" ng-repeat="spell_id in spell_list.list">
+                <div class="left floated content">
+                  {{ getSpell(spell_id).name }}
+                </div>
+                <div class="right floated content">
+                  <a class="ui button" ng-click="remove_spell(spell_list, spell_id)"><i class="remove icon "/></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 
+      <div class="ui middle aligned divided list">
+        <div class="item" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
+          <div class="right floated content">
+            <div class="ui button" type="button" ng-click="spellLists.edit.remove_spell(spell)">Remove</div>
+          </div>
+          <div class="left floated content">
+            <div ng-if="spells !== 'loading'" ng-click="spellClick(spell)" >
+              {{ spell.name }}
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <table id="spell-table" class="ui sortable selectable celled table">
+  <thead>
+    <tr>
+      <th class="">Spell Name</th>
+      <th class="">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-if="spells === 'loading'">
+      <td colspan="4">
+        <div class="ui active centered inline text loader">Loading Spells</div>
+      </td>
+    </tr>
+    <tr ng-if="spells !== 'loading'" ng-click="spellClick(spell)" ng-repeat="spell in spells | filter: { name: filters.search } | filter:filter | filter:spellLists.filter">
+      <td>{{ spell.name }}</td>
+    </tr>
+  </tbody>
+</table>
+ -->
+      <div class="actions">
+        <button class="ui red basic button" type="button" ng-click="spellLists.edit.cancel()">
+          <i class="remove icon"></i> Cancel
+        </button>
+        <button class="ui green basic button" type="submit">
+          <i class="checkmark icon"></i> Create
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
