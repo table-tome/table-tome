@@ -70,5 +70,6 @@ module.exports = function(app, express, authenticate) {
       });
     }
   });
+
   return spellRouter;
 };
