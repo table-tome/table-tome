@@ -116,6 +116,7 @@ angular.module('spellbook.controller', ['spell.service', 'list.service'])
               $scope.spellLists.lists = data.lists;
               $("#spell-list-edit-modal").modal("hide");
               $scope.spellLists.selected = "all";
+              $('#spell-list-dropdown').dropdown('set selected', 'all');
             } else {
               // TODO
               console.log(data.message);
