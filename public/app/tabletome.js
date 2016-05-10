@@ -30,8 +30,8 @@ angular.module('tabletome', [
 
     // auth0 login stuff
     authProvider.init({
-      domain: 'jonwrona.auth0.com',
-      clientID: 'DIGJHRuIMv1XeYHIQslKsVvetUWK4Dhx',
+      domain: 'app47270198.auth0.com',
+      clientID: 'h1L6V5X1y1Jf2SCEsaBja7oLTiE8EL9C',
       loginUrl: '/login'
     });
 
